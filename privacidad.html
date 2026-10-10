@@ -446,6 +446,22 @@ a.inl:hover { text-decoration-thickness: 2px; }
 .map-box .city:hover .cs, .map-box .city:focus-visible .cs, .map-box .city.on .cs { animation: none; opacity: 1; }
 @media (prefers-reduced-motion: reduce) { .map-box .city .cs { animation: none; opacity: 1; } }
 
+/* Mapa: más fuerza — estrellas más grandes con resplandor suave que se enciende y se apaga */
+@keyframes twk2 { 0%,100% { opacity: .35; } 45%,55% { opacity: 1; } }
+@keyframes halo2 { 0%,100% { opacity: 0; } 45%,55% { opacity: 1; } }
+.map-box .city .cs { animation-name: twk2; filter: drop-shadow(0 0 2px rgba(179,138,51,.6)); }
+.map-box .city .halo { fill: url(#glow); stroke: none; r: 30px; opacity: 0; animation: halo2 6s ease-in-out infinite; }
+.map-box g.city:nth-of-type(1) .halo { animation-duration: 5.2s; animation-delay: 0s; }
+.map-box g.city:nth-of-type(2) .halo { animation-duration: 7.1s; animation-delay: -2.4s; }
+.map-box g.city:nth-of-type(3) .halo { animation-duration: 6.3s; animation-delay: -4.1s; }
+.map-box g.city:nth-of-type(4) .halo { animation-duration: 8.4s; animation-delay: -1.2s; }
+.map-box g.city:nth-of-type(5) .halo { animation-duration: 5.8s; animation-delay: -3.3s; }
+.map-box g.city:nth-of-type(6) .halo { animation-duration: 7.7s; animation-delay: -5.6s; }
+.map-box .city:hover .halo, .map-box .city:focus-visible .halo, .map-box .city.on .halo { animation: none; opacity: 1; }
+.map-box .city:hover .cs, .map-box .city:focus-visible .cs, .map-box .city.on .cs { animation: none; opacity: 1; }
+.map-sec .city text { font-weight: 600; font-size: 12px; fill: #6B4A0E; }
+@media (prefers-reduced-motion: reduce) { .map-box .city .halo { animation: none; opacity: .6; } .map-box .city .cs { animation: none; opacity: 1; } }
+
 </style>
 </head>
 <body>
