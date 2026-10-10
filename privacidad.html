@@ -486,24 +486,17 @@ a.ci-v:hover { color: #F6E2A6; text-decoration: underline; text-underline-offset
 .contact-split .btn-dark { width: 100%; justify-content: center; }
 @media (max-width: 860px) { .contact-split { grid-template-columns: minmax(0, 1fr); } .contact-split .form-wrap { border-left: 0; border-top: 1px solid var(--line); } }
 
-/* Portada: emblema de la etiqueta (espiral dorada) con puntos que brillan y se apagan */
-.stage { width: clamp(230px, 26vw, 310px); margin-bottom: 18px; }
-.stage .emb { position: relative; width: 100%; aspect-ratio: 520 / 591; }
-.stage .emb img { position: relative; display: block; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 0 10px rgba(232,200,122,.35)); animation: breathe 9s ease-in-out infinite; }
-.stage .glow { position: absolute; inset: 8%; border-radius: 50%; background: radial-gradient(circle, rgba(232,200,122,.20) 0%, rgba(232,200,122,.06) 45%, transparent 70%); animation: breathe 9s ease-in-out infinite; }
-.stage .emb i { position: absolute; width: var(--s); height: var(--s); border-radius: 50%; background: #F6E2A6; box-shadow: 0 0 8px 2px rgba(232,200,122,.8); opacity: 0; animation: dotw var(--d) ease-in-out infinite; animation-delay: var(--w); }
-@keyframes breathe { 0%,100% { opacity: .88; } 50% { opacity: 1; } }
-@keyframes dotw { 0%,100% { opacity: 0; transform: scale(.5); } 50% { opacity: 1; transform: scale(1); } }
-@media (max-width: 560px) { .stage { width: min(280px, calc(100vw - 80px)); } }
-@media (prefers-reduced-motion: reduce) { .stage .emb img, .stage .glow { animation: none; } .stage .emb i { animation: none; opacity: .6; } }
-
-/* Portada: versión más contenida y sutil */
-.stage { width: clamp(180px, 20vw, 240px); margin-bottom: 14px; }
-.stage .emb img { opacity: .8; filter: drop-shadow(0 0 4px rgba(232,200,122,.22)); animation: none; }
-.stage .glow { background: radial-gradient(circle, rgba(232,200,122,.10) 0%, transparent 65%); animation: none; }
-.stage .emb i { box-shadow: 0 0 4px 1px rgba(232,200,122,.55); }
-.stage .emb i:nth-of-type(n+9) { display: none; }
-@media (max-width: 560px) { .stage { width: 170px; } }
+/* Portada: la espiral de la etiqueta como fondo, grande, tenue y casi inmóvil; la estrella única al frente */
+.spiral-bg { position: absolute; left: 50%; top: 46%; width: min(780px, 135vw); aspect-ratio: 1; transform: translate(-50%, -50%); z-index: 0; pointer-events: none;
+  -webkit-mask-image: radial-gradient(circle, #000 45%, transparent 74%); mask-image: radial-gradient(circle, #000 45%, transparent 74%); }
+.spiral-bg img { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .34; animation: spin 300s linear infinite; }
+.spiral-bg i { position: absolute; width: 4px; height: 4px; border-radius: 50%; background: #F6E2A6; box-shadow: 0 0 6px 1px rgba(232,200,122,.6); opacity: 0; animation: dotw var(--d) ease-in-out infinite; animation-delay: var(--w); }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes dotw { 0%,100% { opacity: 0; transform: scale(.5); } 50% { opacity: .9; transform: scale(1); } }
+.stage { width: 54px; margin: 0 auto 22px; }
+.stage svg { display: block; width: 100%; height: auto; filter: drop-shadow(0 0 8px rgba(232,200,122,.45)); }
+@media (max-width: 560px) { .spiral-bg { width: 150vw; top: 42%; } .spiral-bg img { opacity: .24; } .stage { width: 46px; margin-bottom: 16px; } }
+@media (prefers-reduced-motion: reduce) { .spiral-bg img { animation: none; } .spiral-bg i { animation: none; opacity: .5; } }
 
 </style>
 </head>
