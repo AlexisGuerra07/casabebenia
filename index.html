@@ -424,6 +424,51 @@ a.inl:hover { text-decoration-thickness: 2px; }
 .bgvid video{position:fixed;top:0;left:0;width:100vw;height:100vh;height:100lvh}
 .band .wine{background:rgba(5,32,45,.55)}
 
+/* ---------- Paleta de la casa: crema / dorado champán / borgoña ---------- */
+:root { --burgundy: #7A1A2E; --cream: #F4EBDD; }
+/* Cabecera clara */
+.top { background: rgba(250, 246, 238, .95); border-bottom: 1px solid var(--line); color: var(--ink); }
+.brand { color: var(--gold-text); }
+.top nav a { color: var(--ink-soft); }
+.top nav a:hover { color: var(--ink); border-bottom-color: var(--gold); }
+.menu-btn { color: var(--gold-text); }
+@media (max-width: 860px) { .top nav { background: var(--paper); border-top: 1px solid var(--line); } }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .top { background: rgba(7, 38, 54, .94); border-bottom-color: var(--night-line); color: var(--night-fg); }
+  :root:not([data-theme="light"]) .brand, :root:not([data-theme="light"]) .menu-btn { color: var(--night-gold); }
+  :root:not([data-theme="light"]) .top nav a { color: var(--night-soft); }
+}
+/* Lumiel: crema con borgoña; el video va como ventana en la parte superior */
+.lum-sec { position: relative; background: radial-gradient(ellipse 70% 40% at 50% 0%, rgba(232, 200, 122, .30) 0%, transparent 70%), linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%); color: var(--ink); border-block: 1px solid var(--line); }
+.lum-sec .wine { background: #FFFDF8; border: 1px solid var(--line); box-shadow: 0 26px 40px -30px rgba(80, 55, 15, .4); -webkit-backdrop-filter: none; backdrop-filter: none; }
+.lum-sec .wine > img { box-shadow: 0 0 0 1px var(--line); }
+.lum-sec .varietal { color: var(--gold-text); }
+.lum-sec .varietal .sub { color: var(--burgundy); font-weight: 600; letter-spacing: .02em; }
+.lum-sec .notes { color: var(--ink); }
+.lum-sec .ficha, .lum-sec .ficha > div { border-color: var(--line); }
+.lum-sec .ficha dt { color: var(--gold-text); }
+.lum-sec .origin p:last-child { color: var(--ink-soft); }
+#lumiel .bgvid { position: relative; inset: auto; z-index: 0; clip-path: none; width: min(1160px, calc(100% - 40px)); margin: 0 auto clamp(24px, 4vw, 40px); aspect-ratio: 21 / 9; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 26px 40px -30px rgba(80, 55, 15, .45); }
+#lumiel .bgvid video { position: absolute; inset: 0; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1; }
+#lumiel .bgvid::after { background: linear-gradient(180deg, rgba(5, 32, 45, 0) 65%, rgba(5, 32, 45, .3) 100%); }
+@media (max-width: 700px) { #lumiel .bgvid { aspect-ratio: 1 / 1; width: calc(100% - 32px); } }
+/* Dónde comprar: crema con dorado champán */
+.map-sec .statement { color: var(--ink-soft); }
+.map-sec .land { fill: rgba(179, 138, 51, .12); stroke: rgba(122, 86, 18, .6); }
+.map-sec .route { stroke: rgba(122, 86, 18, .55); }
+.map-sec .trav use { --star-l: #E9C976; --star-d: #B38A33; filter: drop-shadow(0 0 4px rgba(179, 138, 51, .8)); }
+.map-sec .city .cs { filter: drop-shadow(0 0 3px rgba(179, 138, 51, .45)); }
+.map-sec .city .halo { fill: rgba(179, 138, 51, .16); stroke: var(--gold); }
+.map-sec .city text { fill: var(--gold-text); stroke: var(--paper-2); }
+.map-sec .city.on text { fill: var(--ink); }
+.map-sec .map-panel h3 { color: var(--ink); }
+.map-sec .mp-kicker { color: var(--gold-text); }
+.map-sec .map-panel p { color: var(--ink-soft); }
+.map-sec .chip { color: var(--ink); border-color: var(--line); }
+.map-sec .chip:hover, .map-sec .chip.on { border-color: var(--gold); color: var(--gold-text); }
+.map-sec .btn-gold { background: var(--gold); border-color: var(--gold); color: #fff; }
+.map-sec .btn-gold:hover { background: var(--gold-text); border-color: var(--gold-text); color: #fff; }
+
 </style>
 </head>
 <body>
@@ -503,7 +548,7 @@ a.inl:hover { text-decoration-thickness: 2px; }
     </div>
   </section>
 
-  <section class="section band" id="lumiel">
+  <section class="section lum-sec" id="lumiel">
   <div class="bgvid" aria-hidden="true"><video muted loop playsinline preload="none" disablepictureinpicture poster="video/lumiel.jpg"><source src="video/lumiel-m.webm" type="video/webm" media="(max-width: 700px)"><source src="video/lumiel-m.mp4" type="video/mp4" media="(max-width: 700px)"><source src="video/lumiel.webm" type="video/webm"><source src="video/lumiel.mp4" type="video/mp4"></video></div>
     <div class="wrap">
       <h2 class="sr-only">LUMIEL</h2>
@@ -551,7 +596,7 @@ a.inl:hover { text-decoration-thickness: 2px; }
     </div>
   </section>
 
-  <section class="section band map-sec" id="donde-comprar">
+  <section class="section alt map-sec" id="donde-comprar">
     <div class="wrap">
       <header class="sec-head center">
         <p class="eyebrow">La botella viajera</p>
