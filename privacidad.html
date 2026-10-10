@@ -331,6 +331,27 @@ a.inl:hover { text-decoration-thickness: 2px; }
 }
 @media (prefers-reduced-motion: reduce) { .menu-btn span, .menu-btn span::before, .menu-btn span::after { transition: none; } }
 
+/* ---------- Franja de marcas (reemplaza las tarjetas repetidas) ---------- */
+.strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid var(--line); background: var(--card); }
+.strip li { display: flex; border-right: 1px solid var(--line); }
+.strip li:last-child { border-right: 0; }
+.strip a, .strip li.soon { display: flex; flex-direction: column; gap: 6px; padding: 26px 26px 24px; width: 100%; text-decoration: none; color: inherit; }
+.strip li.soon { background: transparent; opacity: .8; }
+.strip .kind { font-size: 12px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--ink-soft); }
+.strip .sn { font-family: 'Cinzel', Georgia, serif; font-size: 24px; letter-spacing: .14em; line-height: 1.2; color: var(--ink); }
+.strip .sd { color: var(--ink-soft); }
+.strip .go { margin-top: auto; padding-top: 6px; font-weight: 700; font-size: 13px; letter-spacing: .22em; text-transform: uppercase; color: var(--gold-text); }
+.strip a:hover { background: var(--paper-2); }
+.strip a:hover .go { color: var(--ink); }
+@media (max-width: 860px) {
+  .strip { grid-template-columns: minmax(0, 1fr); }
+  .strip li { border-right: 0; border-bottom: 1px solid var(--line); }
+  .strip li:last-child { border-bottom: 0; }
+  .strip a, .strip li.soon { padding: 16px 18px; gap: 3px; }
+  .strip .sn { font-size: 20px; }
+  .strip .go { padding-top: 2px; }
+}
+
 </style>
 </head>
 <body>
