@@ -546,7 +546,7 @@ a.inl:hover { text-decoration-thickness: 2px; }
           <div><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
           <div><label for="f-tipo">Soy</label><select id="f-tipo" name="tipo"><option>Consumidor</option><option>Vinoteca o comercio</option><option>Otro</option></select></div>
           <div class="full"><label for="f-msg">Mensaje</label><textarea id="f-msg" name="msg" required></textarea></div>
-          <div class="full check"><label class="chk"><input type="checkbox" id="f-ok" name="ok" required> <span>Acepto que Casa Bebenia use mis datos para responder mi consulta, según la <a class="inl" href="/privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.</span></label></div>
+          <div class="full check"><label class="chk"><input type="checkbox" id="f-ok" name="ok" required> <span>Acepto que Casa Bebenia use mis datos para responder mi consulta y que se almacenen en proveedores ubicados fuera de Argentina (por ejemplo, Estados Unidos), según la <a class="inl" href="/privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.</span></label></div>
           <div class="full"><button class="btn btn-dark" type="submit">Enviar consulta</button><p class="form-note" id="f-status" role="status" aria-live="polite"></p></div>
         </form>
       </div>
@@ -579,7 +579,7 @@ a.inl:hover { text-decoration-thickness: 2px; }
           { name: 'email', value: g('email') }, { name: 'message', value: '[' + g('tipo') + '] ' + g('msg') }
         ],
         context: { pageUri: location.href, pageName: document.title },
-        legalConsentOptions: { consent: { consentToProcess: true, text: 'Acepto que Casa Bebenia use mis datos para responder mi consulta, según la política de privacidad.' } }
+        legalConsentOptions: { consent: { consentToProcess: true, text: 'Acepto que Casa Bebenia use mis datos para responder mi consulta y que se almacenen en proveedores ubicados fuera de Argentina (por ejemplo, Estados Unidos), según la política de privacidad.' } }
       })
     }).then(function (r) {
       if (!r.ok) throw new Error('hs');
