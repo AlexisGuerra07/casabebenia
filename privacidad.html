@@ -498,6 +498,17 @@ a.ci-v:hover { color: #F6E2A6; text-decoration: underline; text-underline-offset
 @media (max-width: 560px) { .spiral-bg { width: 150vw; top: 42%; } .spiral-bg img { opacity: .24; } .stage { width: 46px; margin-bottom: 16px; } }
 @media (prefers-reduced-motion: reduce) { .spiral-bg img { animation: none; } .spiral-bg i { animation: none; opacity: .5; } }
 
+/* Portada: espiral vectorial nítida + velo suave tras el texto para que se lea */
+.spiral-bg img { opacity: .5; }
+.hero-in { position: relative; }
+.hero-in::before { content: ''; position: absolute; z-index: -1; inset: -8% -18%; background: radial-gradient(ellipse 50% 50% at 50% 55%, rgba(5,32,45,.78) 0%, rgba(5,32,45,.45) 55%, transparent 100%); pointer-events: none; }
+.spiral-bg { width: min(860px, 130vw); }
+@media (max-width: 560px) { .spiral-bg { width: 135vw; } .spiral-bg img { opacity: .45; } }
+.spiral-bg img { opacity: .95; }
+.spiral-bg { -webkit-mask-image: radial-gradient(circle, #000 55%, transparent 76%); mask-image: radial-gradient(circle, #000 55%, transparent 76%); }
+.hero-in::before { background: radial-gradient(ellipse 46% 44% at 50% 58%, rgba(5,32,45,.62) 0%, rgba(5,32,45,.3) 60%, transparent 100%); }
+@media (max-width: 560px) { .spiral-bg img { opacity: .9; } }
+
 </style>
 </head>
 <body>
