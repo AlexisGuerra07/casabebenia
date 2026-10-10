@@ -434,6 +434,18 @@ a.inl:hover { text-decoration-thickness: 2px; }
 .map-sec .btn-gold { background: var(--gold); border-color: var(--gold); color: #fff; }
 .map-sec .btn-gold:hover { background: var(--gold-text); border-color: var(--gold-text); color: #fff; }
 
+/* Mapa: sin recorrido; las estrellas se encienden y apagan de forma intercalada */
+@keyframes twk { 0%,100% { opacity: .18; } 40%,60% { opacity: 1; } }
+.map-box .city .cs { animation: twk 6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.map-box g.city:nth-of-type(1) .cs { animation-duration: 5.2s; animation-delay: 0s; }
+.map-box g.city:nth-of-type(2) .cs { animation-duration: 7.1s; animation-delay: -2.4s; }
+.map-box g.city:nth-of-type(3) .cs { animation-duration: 6.3s; animation-delay: -4.1s; }
+.map-box g.city:nth-of-type(4) .cs { animation-duration: 8.4s; animation-delay: -1.2s; }
+.map-box g.city:nth-of-type(5) .cs { animation-duration: 5.8s; animation-delay: -3.3s; }
+.map-box g.city:nth-of-type(6) .cs { animation-duration: 7.7s; animation-delay: -5.6s; }
+.map-box .city:hover .cs, .map-box .city:focus-visible .cs, .map-box .city.on .cs { animation: none; opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .map-box .city .cs { animation: none; opacity: 1; } }
+
 </style>
 </head>
 <body>
