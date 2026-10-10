@@ -409,6 +409,14 @@ a.inl:hover { text-decoration-thickness: 2px; }
 @media (max-width:560px){.wine{padding:16px;gap:16px}}
 .wine-info .varietal{color:var(--night-gold)}
 
+/* Videos de fondo (opcionales: solo se insertan si existen video/unique.mp4 y video/lumiel.mp4) */
+.ue-sec,.band{position:relative;overflow:hidden}
+.ue-sec>.wrap,.band>.wrap{position:relative;z-index:1}
+.bgvid{position:absolute;inset:0;z-index:0;pointer-events:none}
+.bgvid video{width:100%;height:100%;object-fit:cover;display:block;opacity:.55}
+.bgvid::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,32,45,.75) 0%,rgba(5,32,45,.35) 50%,rgba(5,32,45,.8) 100%)}
+@media (prefers-reduced-motion:reduce){.bgvid video{display:none}}
+
 </style>
 </head>
 <body>
@@ -462,6 +470,7 @@ a.inl:hover { text-decoration-thickness: 2px; }
   </section>
 
   <section class="section ue-sec" id="unique">
+  
     <div class="wrap">
       <h2 class="sr-only">Unique Étoile</h2>
       <div class="ue-wrap">
@@ -488,6 +497,7 @@ a.inl:hover { text-decoration-thickness: 2px; }
   </section>
 
   <section class="section band" id="lumiel">
+  
     <div class="wrap">
       <h2 class="sr-only">LUMIEL</h2>
 
@@ -630,6 +640,17 @@ a.inl:hover { text-decoration-thickness: 2px; }
     </div>
   </section>
 </main>
+<script>
+(function () {
+  var v = document.querySelectorAll('.bgvid video'); if (!v.length || !('IntersectionObserver' in window)) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var io = new IntersectionObserver(function (es) { es.forEach(function (e) {
+    var x = e.target;
+    if (e.isIntersecting) { x.preload = 'auto'; var p = x.play(); if (p && p.catch) p.catch(function () {}); } else { x.pause(); }
+  }); }, { threshold: .1 });
+  v.forEach(function (x) { io.observe(x); });
+})();
+</script>
 <script>
 (function () {
   var top = document.querySelector('.top'), btn = document.querySelector('.menu-btn'); if (!top || !btn) return;
