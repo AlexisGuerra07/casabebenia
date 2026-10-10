@@ -497,6 +497,14 @@ a.ci-v:hover { color: #F6E2A6; text-decoration: underline; text-underline-offset
 @media (max-width: 560px) { .stage { width: min(280px, calc(100vw - 80px)); } }
 @media (prefers-reduced-motion: reduce) { .stage .emb img, .stage .glow { animation: none; } .stage .emb i { animation: none; opacity: .6; } }
 
+/* Portada: versión más contenida y sutil */
+.stage { width: clamp(180px, 20vw, 240px); margin-bottom: 14px; }
+.stage .emb img { opacity: .8; filter: drop-shadow(0 0 4px rgba(232,200,122,.22)); animation: none; }
+.stage .glow { background: radial-gradient(circle, rgba(232,200,122,.10) 0%, transparent 65%); animation: none; }
+.stage .emb i { box-shadow: 0 0 4px 1px rgba(232,200,122,.55); }
+.stage .emb i:nth-of-type(n+9) { display: none; }
+@media (max-width: 560px) { .stage { width: 170px; } }
+
 </style>
 </head>
 <body>
