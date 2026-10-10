@@ -118,11 +118,7 @@ h2 { font-size: clamp(34px, 4.6vw, 54px); line-height: 1.12; letter-spacing: .00
 .top nav { display: flex; gap: 2px 34px; }
 .top nav a { font-size: 13px; letter-spacing: .24em; text-decoration: none; color: var(--night-soft); padding: 10px 0; border-bottom: 1px solid transparent; white-space: nowrap; }
 .top nav a:hover { color: var(--night-fg); border-bottom-color: var(--night-gold); }
-@media (max-width: 860px) {
-  .bar { justify-content: center; padding-block: 12px 0; }
-  .top nav { flex-basis: 100%; overflow-x: auto; justify-content: flex-start; gap: 0 26px; scrollbar-width: none; margin-inline: -24px; padding-inline: 24px; }
-  .top nav::-webkit-scrollbar { display: none; }
-}
+
 
 /* ---------- Portada ---------- */
 .hero {
@@ -284,26 +280,75 @@ a.inl:hover { text-decoration-thickness: 2px; }
 .form-note { font-size: 16px; color: var(--ink-soft); margin: 14px 0 0; }
 @media (max-width: 560px) { .form-grid { grid-template-columns: minmax(0, 1fr); } }
 
-/* ---------- Menú en celular: más compacto, con indicio de que se desliza ---------- */
-@media (max-width: 560px) {
-  html { scroll-padding-top: 104px; }
-  .bar { padding-block: 9px 0; }
-  .top nav { gap: 0 20px; -webkit-mask-image: linear-gradient(90deg, #000 0, #000 88%, transparent 100%); mask-image: linear-gradient(90deg, #000 0, #000 88%, transparent 100%); }
-  .top nav a { font-size: 11.5px; letter-spacing: .16em; padding: 8px 0; }
-}
 
-.form-grid .check { margin-top: -4px; }
-.form-grid label.chk { display: flex; gap: 10px; align-items: flex-start; text-transform: none; letter-spacing: 0; font-size: 17px; font-weight: 500; color: var(--ink-soft); line-height: 1.35; }
-.form-grid label.chk input { width: 20px; height: 20px; margin-top: 3px; flex: none; accent-color: var(--gold); }
-.legal-page { padding-block: clamp(40px, 7vw, 90px); }
-.legal-page h1 { font-family: 'Cinzel', Georgia, serif; font-weight: 400; font-size: clamp(30px, 5vw, 46px); letter-spacing: .1em; text-transform: uppercase; margin: 0 0 8px; color: var(--ink); background: none; -webkit-text-fill-color: currentColor; }
-.legal-page h2 { font-size: 28px; margin: 36px 0 8px; text-align: left; }
-.legal-page p, .legal-page li { color: var(--ink-soft); }
-.legal-page ul { padding-left: 22px; }
-.legal-page .upd { font-style: italic; margin-bottom: 28px; }
-.legal-page h1 { text-shadow: none; filter: none; }
-.legal-page ul { list-style: disc; }
-.legal-page li { margin-bottom: 6px; }
+/* ---------- Más compacta: menos alto de página ---------- */
+.section { padding-block: clamp(44px, 6vw, 84px); }
+.sec-head { margin-bottom: clamp(24px, 3.5vw, 40px); }
+.origin { margin-top: clamp(28px, 4vw, 48px); }
+
+/* ---------- Menú desplegable ---------- */
+.menu-btn { display: none; width: 46px; height: 46px; margin-right: -10px; background: transparent; border: 0; cursor: pointer; position: relative; color: var(--night-gold); }
+.menu-btn span, .menu-btn span::before, .menu-btn span::after { content: ''; position: absolute; left: 11px; right: 11px; height: 2px; background: currentColor; transition: transform .25s ease, top .25s ease, opacity .2s ease; }
+.menu-btn span { top: 22px; }
+.menu-btn span::before { left: 0; right: 0; top: -7px; }
+.menu-btn span::after { left: 0; right: 0; top: 7px; }
+.top.open .menu-btn span { background: transparent; }
+.top.open .menu-btn span::before { top: 0; transform: rotate(45deg); }
+.top.open .menu-btn span::after { top: 0; transform: rotate(-45deg); }
+@media (max-width: 860px) {
+  .bar { flex-wrap: nowrap; justify-content: space-between; padding-block: 8px; }
+  .brand { font-size: 15px; letter-spacing: .24em; gap: 10px; }
+  .menu-btn { display: block; }
+  .top nav { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0; padding: 4px 20px 14px; background: rgba(7, 38, 54, .98); border-bottom: 1px solid var(--night-line); box-shadow: 0 20px 30px -10px rgba(0, 0, 0, .5); }
+  .top.open nav { display: flex; }
+  .top nav a { font-size: 14px; letter-spacing: .22em; padding: 15px 0; border-bottom: 1px solid var(--night-line); }
+  .top nav a:last-child { border-bottom: 0; }
+  html { scroll-padding-top: 70px; }
+
+  body { font-size: 19px; line-height: 1.5; }
+  .wrap { width: min(1160px, calc(100% - 40px)); }
+  .wrap.narrow { width: min(780px, calc(100% - 40px)); }
+  .statement { font-size: 20px; margin-top: 14px; }
+  h2 { font-size: clamp(28px, 7.4vw, 36px); }
+  h2.lum { font-size: clamp(38px, 11vw, 52px); }
+  .hero { min-height: 0; padding: 30px 0 52px; }
+  .hero .scroll { display: none; }
+  .stage { width: 170px; margin-bottom: 14px; }
+  .hero-c .stage-c { width: min(300px, calc(100vw - 60px)); }
+  .brands { gap: 14px; }
+  .brand-card .visual { aspect-ratio: 16 / 8; }
+  .brand-card .body { padding: 18px 20px 22px; }
+  .brand-card h3 { font-size: 21px; margin-bottom: 6px; }
+  .brand-card.soon .visual { display: none; }
+  .ue-wrap { padding: 16px; gap: 18px; }
+  .ue-wrap .tag { font-size: 20px; margin-bottom: 12px; }
+  .notes { font-size: 19px; margin: 6px 0 12px; }
+  .ficha { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 18px; }
+  .ficha > div { grid-template-columns: minmax(0, 1fr); gap: 1px; padding: 7px 0; }
+  .ficha > div.wide { grid-column: 1 / -1; }
+  .ficha dt { font-size: 11px; letter-spacing: .18em; }
+  .ficha dd { font-size: 18px; line-height: 1.25; }
+  .wines { gap: 14px; }
+  .wine { padding: 16px; gap: 12px; }
+  .wine > img { width: 96px; }
+  .origin p:last-child { font-size: 19px; }
+  .cities { margin: 22px 0 22px; }
+  .cities li { padding: 14px 8px; font-size: 12px; }
+  .faq summary { font-size: 19px; padding: 16px 38px 16px 0; }
+  .faq summary::after { font-size: 28px; }
+  .faq details p { margin-bottom: 16px; }
+  .contact-card { padding: 24px 20px; gap: 18px; }
+  .phone { font-size: 30px; margin-bottom: 14px; }
+  .form-wrap { padding: 20px 18px; margin-top: 20px; }
+  .form-wrap h3 { font-size: 24px; }
+  .form-grid { gap: 12px; }
+  .form-grid input, .form-grid select, .form-grid textarea { font-size: 17px; padding: 10px 12px; }
+  .form-grid textarea { min-height: 96px; }
+  .foot-top { gap: 10px; }
+  .foot-links { gap: 2px 20px; margin-bottom: 20px; }
+  .foot-links a { font-size: 11px; letter-spacing: .16em; padding: 5px 0; }
+}
+@media (prefers-reduced-motion: reduce) { .menu-btn span, .menu-btn span::before, .menu-btn span::after { transition: none; } }
 
 
 .hero-c { padding-block: 36px 84px; }
@@ -338,7 +383,8 @@ a.node:focus-visible { outline: 2px solid var(--night-gold); outline-offset: 8px
 <header class="top">
   <div class="wrap bar">
     <a class="brand" href="#inicio" aria-label="Casa Bebenia, inicio"><svg class="star brand-star" viewBox="-66 -76 132 178" aria-hidden="true" focusable="false"><use href="#star8" x="-66" y="-76" width="132" height="178"/></svg><span>CASA BEBENIA</span></a>
-    <nav aria-label="Principal">
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menú"><span></span></button>
+    <nav id="site-nav" aria-label="Principal">
       <a href="#casa">La casa</a>
       <a href="#marcas">Marcas</a>
       <a href="#unique">Unique Étoile</a>
@@ -569,6 +615,16 @@ a.node:focus-visible { outline: 2px solid var(--night-gold); outline-offset: 8px
     </div>
   </section>
 </main>
+<script>
+(function () {
+  var top = document.querySelector('.top'), btn = document.querySelector('.menu-btn'); if (!top || !btn) return;
+  function set(o) { top.classList.toggle('open', o); btn.setAttribute('aria-expanded', o); btn.setAttribute('aria-label', o ? 'Cerrar menú' : 'Abrir menú'); }
+  btn.addEventListener('click', function () { set(!top.classList.contains('open')); });
+  top.querySelectorAll('nav a').forEach(function (a) { a.addEventListener('click', function () { set(false); }); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
+  window.addEventListener('resize', function () { if (innerWidth > 860) set(false); });
+})();
+</script>
 <script>
 (function () {
   // HubSpot: completar con los datos de la cuenta (Marketing > Formularios). Si quedan vacíos, el formulario abre WhatsApp.
