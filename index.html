@@ -479,6 +479,30 @@ a.inl:hover { text-decoration-thickness: 2px; }
 .map-sec .city text { font-weight: 600; font-size: 12px; fill: #6B4A0E; }
 @media (prefers-reduced-motion: reduce) { .map-box .city .halo { animation: none; opacity: .6; } .map-box .city .cs { animation: none; opacity: 1; } }
 
+/* Contacto: tarjeta dividida — datos a la izquierda, formulario claro a la derecha */
+.contact-split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); border: 1px solid var(--night-line); box-shadow: 0 30px 60px -40px rgba(8,40,55,.55); }
+.contact-info { padding: clamp(28px, 4.5vw, 60px); background: radial-gradient(ellipse 80% 70% at 0% 0%, rgba(20,96,122,.5) 0%, transparent 70%), linear-gradient(160deg, var(--night) 0%, var(--night-2) 100%); color: var(--night-fg); display: flex; flex-direction: column; justify-content: center; }
+.contact-info .eyebrow { color: var(--night-gold); }
+.contact-info h2 { color: var(--night-gold); margin: 0 0 14px; }
+.contact-info .ci-lead { color: var(--night-soft); margin: 0 0 26px; }
+.ci-list { list-style: none; margin: 0 0 28px; padding: 0; border-top: 1px solid var(--night-line); }
+.ci-list li { display: grid; gap: 2px; padding: 14px 0; border-bottom: 1px solid var(--night-line); }
+.ci-k { font-family: 'Cinzel', Georgia, serif; font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--night-gold); opacity: .85; }
+.ci-v { font-size: clamp(22px, 2.4vw, 28px); color: var(--night-fg); text-decoration: none; overflow-wrap: anywhere; }
+a.ci-v:hover { color: #F6E2A6; text-decoration: underline; text-underline-offset: 4px; }
+.contact-split .form-wrap { margin: 0; max-width: none; border: 0; border-left: 1px solid var(--line); background: #FFFDF8; padding: clamp(28px, 4.5vw, 60px); align-content: center; }
+.contact-split .form-wrap h3 { font-size: clamp(28px, 3vw, 34px); color: var(--ink); margin: 0 0 4px; }
+.contact-split .fw-sub { margin: 0 0 24px; color: var(--ink-soft); }
+.contact-split .form-grid label { color: #7A5A12; }
+.contact-split .form-grid input, .contact-split .form-grid select, .contact-split .form-grid textarea { background: #FFFFFF; border: 1px solid #CDB98A; color: var(--ink); }
+.contact-split .form-grid input:focus, .contact-split .form-grid select:focus, .contact-split .form-grid textarea:focus { outline: 2px solid var(--gold); border-color: var(--gold); }
+.contact-split .form-grid textarea { min-height: 120px; }
+.contact-split .chk { text-transform: none; letter-spacing: 0; font-weight: 400; font-size: 15px; color: var(--ink-soft); display: flex; gap: 10px; align-items: flex-start; }
+.contact-split .chk input { width: 18px; height: 18px; margin-top: 3px; flex: none; }
+.contact-split .chk span { text-transform: none; letter-spacing: 0; }
+.contact-split .btn-dark { width: 100%; justify-content: center; }
+@media (max-width: 860px) { .contact-split { grid-template-columns: minmax(0, 1fr); } .contact-split .form-wrap { border-left: 0; border-top: 1px solid var(--line); } }
+
 </style>
 </head>
 <body>
@@ -673,30 +697,31 @@ a.inl:hover { text-decoration-thickness: 2px; }
 
   <section class="section contact" id="contacto">
     <div class="wrap">
-      <div class="contact-card">
-        <div>
+      <div class="contact-split">
+        <div class="contact-info">
           <p class="eyebrow">Contacto</p>
           <h2>Hablemos de vino</h2>
-          <p>Para consultas sobre los vinos de la casa, escribinos directamente.</p>
-        </div>
-        <div class="person">
-          <p class="who">Gabriela Critelli</p>
-          <p class="phone">+54 9 11 4410-6132</p>
+          <p class="ci-lead">Consultas sobre los vinos de la casa, pedidos o propuestas para tu vinoteca. Elegí el medio que prefieras.</p>
+          <ul class="ci-list">
+            <li><span class="ci-k">Atención</span><span class="ci-v">Gabriela Critelli</span></li>
+            <li><span class="ci-k">WhatsApp</span><a class="ci-v" href="https://wa.me/5491144106132" target="_blank" rel="noopener">+54 9 11 4410-6132</a></li>
+            <li><span class="ci-k">Email</span><a class="ci-v" href="mailto:casabebenia@gmail.com">casabebenia@gmail.com</a></li>
+          </ul>
           <p><a class="btn btn-gold" href="https://wa.me/5491144106132" target="_blank" rel="noopener">Escribir por WhatsApp</a></p>
         </div>
-      </div>
-      <div class="form-wrap">
-        <h3>Escribinos</h3>
-        <p>Dejanos tus datos y tu consulta. Te respondemos a la brevedad.</p>
-        <form id="contact-form" class="form-grid" novalidate>
-          <div><label for="f-nombre">Nombre</label><input id="f-nombre" name="nombre" autocomplete="given-name" required></div>
-          <div><label for="f-apellido">Apellido</label><input id="f-apellido" name="apellido" autocomplete="family-name" required></div>
-          <div><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
-          <div><label for="f-tipo">Soy</label><select id="f-tipo" name="tipo"><option>Consumidor</option><option>Vinoteca o comercio</option><option>Otro</option></select></div>
-          <div class="full"><label for="f-msg">Mensaje</label><textarea id="f-msg" name="msg" required></textarea></div>
-          <div class="full check"><label class="chk"><input type="checkbox" id="f-ok" name="ok" required> <span>Acepto que Casa Bebenia use mis datos para responder mi consulta y que se almacenen en proveedores ubicados fuera de Argentina (por ejemplo, Estados Unidos), según la <a class="inl" href="/privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.</span></label></div>
-          <div class="full"><button class="btn btn-dark" type="submit">Enviar consulta</button><p class="form-note" id="f-status" role="status" aria-live="polite"></p></div>
-        </form>
+        <div class="form-wrap">
+          <h3>Dejanos tu consulta</h3>
+          <p class="fw-sub">Te respondemos a la brevedad.</p>
+          <form id="contact-form" class="form-grid" novalidate>
+            <div><label for="f-nombre">Nombre</label><input id="f-nombre" name="nombre" autocomplete="given-name" required></div>
+            <div><label for="f-apellido">Apellido</label><input id="f-apellido" name="apellido" autocomplete="family-name" required></div>
+            <div><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+            <div><label for="f-tipo">Soy</label><select id="f-tipo" name="tipo"><option>Consumidor</option><option>Vinoteca o comercio</option><option>Otro</option></select></div>
+            <div class="full"><label for="f-msg">Mensaje</label><textarea id="f-msg" name="msg" required></textarea></div>
+            <div class="full check"><label class="chk"><input type="checkbox" id="f-ok" name="ok" required> <span>Acepto que Casa Bebenia use mis datos para responder mi consulta y que se almacenen en proveedores ubicados fuera de Argentina (por ejemplo, Estados Unidos), según la <a class="inl" href="/privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.</span></label></div>
+            <div class="full"><button class="btn btn-dark" type="submit">Enviar consulta</button><p class="form-note" id="f-status" role="status" aria-live="polite"></p></div>
+          </form>
+        </div>
       </div>
     </div>
   </section>
@@ -727,7 +752,7 @@ a.inl:hover { text-decoration-thickness: 2px; }
   // HubSpot: completar con los datos de la cuenta (Marketing > Formularios). Si quedan vacíos, el formulario abre WhatsApp.
   var HS_PORTAL_ID = '';
   var HS_FORM_GUID = '';
-  var WA = 'https://wa.me/5491144106132';
+  var WA = 'https://wa.me/5491144106132'; var MAIL = 'casabebenia@gmail.com';
   var f = document.getElementById('contact-form'); if (!f) return;
   var st = document.getElementById('f-status');
   var btn = f.querySelector('button[type=submit]');
@@ -738,7 +763,7 @@ a.inl:hover { text-decoration-thickness: 2px; }
     if (!f.elements.ok.checked) { st.textContent = 'Para enviar, aceptá el uso de tus datos.'; return; }
     var texto = 'Hola, soy ' + g('nombre') + ' ' + g('apellido') + ' (' + g('tipo') + '). Mi email es ' + g('email') + '.\n\n' + g('msg');
     var wa = WA + '?text=' + encodeURIComponent(texto);
-    if (!HS_PORTAL_ID || !HS_FORM_GUID) { st.textContent = 'Abriendo WhatsApp…'; window.open(wa, '_blank', 'noopener'); return; }
+    if (!HS_PORTAL_ID || !HS_FORM_GUID) { st.innerHTML = 'Abriendo tu correo… Si no se abre, escribinos a <a class="inl" href="mailto:' + MAIL + '">' + MAIL + '</a> o por <a class="inl" href="' + wa + '" target="_blank" rel="noopener">WhatsApp</a>.'; location.href = 'mailto:' + MAIL + '?subject=' + encodeURIComponent('Consulta desde casabebenia.com') + '&body=' + encodeURIComponent(texto); return; }
     btn.disabled = true; st.textContent = 'Enviando…';
     fetch('https://api.hsforms.com/submissions/v3/integration/submit/' + HS_PORTAL_ID + '/' + HS_FORM_GUID, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
@@ -773,6 +798,7 @@ a.inl:hover { text-decoration-thickness: 2px; }
         <li><a href="#preguntas">Preguntas frecuentes</a></li>
         <li><a href="https://www.instagram.com/espumanteunique/" target="_blank" rel="noopener">Instagram ↗</a></li>
         <li><a href="#contacto">Contacto</a></li>
+        <li><a href="mailto:casabebenia@gmail.com">casabebenia@gmail.com</a></li>
         <li><a href="/privacidad.html">Privacidad</a></li>
       </ul>
     </div>

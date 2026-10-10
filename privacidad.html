@@ -462,6 +462,30 @@ a.inl:hover { text-decoration-thickness: 2px; }
 .map-sec .city text { font-weight: 600; font-size: 12px; fill: #6B4A0E; }
 @media (prefers-reduced-motion: reduce) { .map-box .city .halo { animation: none; opacity: .6; } .map-box .city .cs { animation: none; opacity: 1; } }
 
+/* Contacto: tarjeta dividida — datos a la izquierda, formulario claro a la derecha */
+.contact-split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); border: 1px solid var(--night-line); box-shadow: 0 30px 60px -40px rgba(8,40,55,.55); }
+.contact-info { padding: clamp(28px, 4.5vw, 60px); background: radial-gradient(ellipse 80% 70% at 0% 0%, rgba(20,96,122,.5) 0%, transparent 70%), linear-gradient(160deg, var(--night) 0%, var(--night-2) 100%); color: var(--night-fg); display: flex; flex-direction: column; justify-content: center; }
+.contact-info .eyebrow { color: var(--night-gold); }
+.contact-info h2 { color: var(--night-gold); margin: 0 0 14px; }
+.contact-info .ci-lead { color: var(--night-soft); margin: 0 0 26px; }
+.ci-list { list-style: none; margin: 0 0 28px; padding: 0; border-top: 1px solid var(--night-line); }
+.ci-list li { display: grid; gap: 2px; padding: 14px 0; border-bottom: 1px solid var(--night-line); }
+.ci-k { font-family: 'Cinzel', Georgia, serif; font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--night-gold); opacity: .85; }
+.ci-v { font-size: clamp(22px, 2.4vw, 28px); color: var(--night-fg); text-decoration: none; overflow-wrap: anywhere; }
+a.ci-v:hover { color: #F6E2A6; text-decoration: underline; text-underline-offset: 4px; }
+.contact-split .form-wrap { margin: 0; max-width: none; border: 0; border-left: 1px solid var(--line); background: #FFFDF8; padding: clamp(28px, 4.5vw, 60px); align-content: center; }
+.contact-split .form-wrap h3 { font-size: clamp(28px, 3vw, 34px); color: var(--ink); margin: 0 0 4px; }
+.contact-split .fw-sub { margin: 0 0 24px; color: var(--ink-soft); }
+.contact-split .form-grid label { color: #7A5A12; }
+.contact-split .form-grid input, .contact-split .form-grid select, .contact-split .form-grid textarea { background: #FFFFFF; border: 1px solid #CDB98A; color: var(--ink); }
+.contact-split .form-grid input:focus, .contact-split .form-grid select:focus, .contact-split .form-grid textarea:focus { outline: 2px solid var(--gold); border-color: var(--gold); }
+.contact-split .form-grid textarea { min-height: 120px; }
+.contact-split .chk { text-transform: none; letter-spacing: 0; font-weight: 400; font-size: 15px; color: var(--ink-soft); display: flex; gap: 10px; align-items: flex-start; }
+.contact-split .chk input { width: 18px; height: 18px; margin-top: 3px; flex: none; }
+.contact-split .chk span { text-transform: none; letter-spacing: 0; }
+.contact-split .btn-dark { width: 100%; justify-content: center; }
+@media (max-width: 860px) { .contact-split { grid-template-columns: minmax(0, 1fr); } .contact-split .form-wrap { border-left: 0; border-top: 1px solid var(--line); } }
+
 </style>
 </head>
 <body>
@@ -476,7 +500,7 @@ a.inl:hover { text-decoration-thickness: 2px; }
   <p>En Casa Bebenia cuidamos los datos personales de quienes nos escriben. Esta política te informa, antes de que nos des tus datos, quién los trata, para qué, con quién se comparten y cómo podés ejercer tus derechos, conforme a la Ley N.º 25.326 de Protección de los Datos Personales de la República Argentina y su normativa complementaria.</p>
 
   <h2>1. Responsable de los datos</h2>
-  <p>El responsable del tratamiento es Casa Bebenia. <!-- COMPLETAR: razón social, CUIT y domicilio (art. 6 inc. b Ley 25.326) --> Podés contactarnos por WhatsApp al +54 9 11 4410-6132 o por el formulario de contacto de este sitio.</p>
+  <p>El responsable del tratamiento es Casa Bebenia. <!-- COMPLETAR: razón social, CUIT y domicilio (art. 6 inc. b Ley 25.326) --> Podés contactarnos por WhatsApp al +54 9 11 4410-6132, por correo a casabebenia@gmail.com o por el formulario de contacto de este sitio.</p>
 
   <h2>2. Qué datos pedimos y si son obligatorios</h2>
   <ul>
