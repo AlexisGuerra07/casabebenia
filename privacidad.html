@@ -486,6 +486,17 @@ a.ci-v:hover { color: #F6E2A6; text-decoration: underline; text-underline-offset
 .contact-split .btn-dark { width: 100%; justify-content: center; }
 @media (max-width: 860px) { .contact-split { grid-template-columns: minmax(0, 1fr); } .contact-split .form-wrap { border-left: 0; border-top: 1px solid var(--line); } }
 
+/* Portada: emblema de la etiqueta (espiral dorada) con puntos que brillan y se apagan */
+.stage { width: clamp(230px, 26vw, 310px); margin-bottom: 18px; }
+.stage .emb { position: relative; width: 100%; aspect-ratio: 520 / 591; }
+.stage .emb img { position: relative; display: block; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 0 10px rgba(232,200,122,.35)); animation: breathe 9s ease-in-out infinite; }
+.stage .glow { position: absolute; inset: 8%; border-radius: 50%; background: radial-gradient(circle, rgba(232,200,122,.20) 0%, rgba(232,200,122,.06) 45%, transparent 70%); animation: breathe 9s ease-in-out infinite; }
+.stage .emb i { position: absolute; width: var(--s); height: var(--s); border-radius: 50%; background: #F6E2A6; box-shadow: 0 0 8px 2px rgba(232,200,122,.8); opacity: 0; animation: dotw var(--d) ease-in-out infinite; animation-delay: var(--w); }
+@keyframes breathe { 0%,100% { opacity: .88; } 50% { opacity: 1; } }
+@keyframes dotw { 0%,100% { opacity: 0; transform: scale(.5); } 50% { opacity: 1; transform: scale(1); } }
+@media (max-width: 560px) { .stage { width: min(280px, calc(100vw - 80px)); } }
+@media (prefers-reduced-motion: reduce) { .stage .emb img, .stage .glow { animation: none; } .stage .emb i { animation: none; opacity: .6; } }
+
 </style>
 </head>
 <body>
