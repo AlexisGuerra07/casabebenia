@@ -401,6 +401,10 @@ a.inl:hover { text-decoration-thickness: 2px; }
 .bgvid video{opacity:.8}
 .bgvid::after{background:linear-gradient(180deg,rgba(5,32,45,.7) 0%,rgba(5,32,45,.2) 45%,rgba(5,32,45,.75) 100%)}
 .ue-sec .ue-wrap,.band .wine{-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+/* El video queda fijo al tamaño de la pantalla y la sección lo recorta: la botella no se agranda en secciones largas */
+.bgvid{clip-path:inset(0)}
+.bgvid video{position:fixed;top:0;left:0;width:100vw;height:100vh;height:100lvh}
+.band .wine{background:rgba(5,32,45,.55)}
 
 </style>
 </head>
