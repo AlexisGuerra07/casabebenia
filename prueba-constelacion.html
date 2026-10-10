@@ -313,7 +313,7 @@ a.inl:hover { text-decoration-thickness: 2px; }
   h2.lum { font-size: clamp(38px, 11vw, 52px); }
   .hero { min-height: 0; padding: 30px 0 52px; }
   .hero .scroll { display: none; }
-  .stage { width: 170px; margin-bottom: 14px; }
+  .stage { width: 230px; margin-bottom: 14px; }
   .hero-c .stage-c { width: min(300px, calc(100vw - 60px)); }
   .brands { gap: 14px; }
   .brand-card .visual { aspect-ratio: 16 / 8; }
@@ -375,6 +375,15 @@ a.inl:hover { text-decoration-thickness: 2px; }
 
 .varietal{margin:0 0 14px}.varietal .sub{display:block;font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;letter-spacing:.02em;font-size:1.1em;color:var(--night-soft);margin-top:4px}
 .ue-wrap .varietal{color:var(--night-gold)}
+
+.stage .arm{fill:none;stroke:url(#gArm);stroke-width:2.6;stroke-linecap:round;opacity:.9}
+.stage .arm.thin{stroke-width:1;opacity:.55}
+.stage .orb{fill:none;stroke:var(--night-gold);stroke-width:1;stroke-dasharray:1 7;stroke-linecap:round;opacity:.4}
+.stage .orbit-dots circle{opacity:.15;animation:tw var(--p,4s) ease-in-out var(--d,0s) infinite;filter:drop-shadow(0 0 3px rgba(232,200,122,.9))}
+@keyframes tw{0%,100%{opacity:.1}50%{opacity:1}}
+.stage .galaxy{transform-origin:200px 200px;animation:gturn 240s linear infinite}
+@keyframes gturn{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.stage .orbit-dots circle{animation:none;opacity:.7}.stage .galaxy{animation:none}}
 
 
 .hero-c { padding-block: 36px 84px; }
