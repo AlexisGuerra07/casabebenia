@@ -37,18 +37,6 @@ body{margin:0}
   --gold-grad: linear-gradient(180deg, #F6E2A6 0%, #E2B964 46%, #C3963A 54%, #EBCB7C 100%);
   --shadow: rgba(8, 40, 55, .28);
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #0E3547; --paper-2: #123F54; --ink: #FAF6EE; --ink-soft: #C9D8DC; --line: #2C6277;
-    --gold: #E3BF6B; --gold-text: #E8C87A; --card: #134A60;
-    --night: #0A3144; --night-2: #061F2D; --shadow: rgba(0, 0, 0, .5); color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --paper: #0E3547; --paper-2: #123F54; --ink: #FAF6EE; --ink-soft: #C9D8DC; --line: #2C6277;
-  --gold: #E3BF6B; --gold-text: #E8C87A; --card: #134A60;
-  --night: #0A3144; --night-2: #061F2D; --shadow: rgba(0, 0, 0, .5); color-scheme: dark;
-}
 
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 90px; }
@@ -415,11 +403,6 @@ a.inl:hover { text-decoration-thickness: 2px; }
 .top nav a:hover { color: var(--ink); border-bottom-color: var(--gold); }
 .menu-btn { color: var(--gold-text); }
 @media (max-width: 860px) { .top nav { background: var(--paper); border-top: 1px solid var(--line); } }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .top { background: rgba(7, 38, 54, .94); border-bottom-color: var(--night-line); color: var(--night-fg); }
-  :root:not([data-theme="light"]) .brand, :root:not([data-theme="light"]) .menu-btn { color: var(--night-gold); }
-  :root:not([data-theme="light"]) .top nav a { color: var(--night-soft); }
-}
 /* Lumiel: crema con borgoña; el video va como ventana en la parte superior */
 .lum-sec { position: relative; background: radial-gradient(ellipse 70% 40% at 50% 0%, rgba(232, 200, 122, .30) 0%, transparent 70%), linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%); color: var(--ink); border-block: 1px solid var(--line); }
 .lum-sec .wine { background: #FFFDF8; border: 1px solid var(--line); box-shadow: 0 26px 40px -30px rgba(80, 55, 15, .4); -webkit-backdrop-filter: none; backdrop-filter: none; }

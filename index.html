@@ -6,7 +6,6 @@
 <title>Casa Bebenia</title>
 <meta name="description" content="Casa Bebenia reúne vinos argentinos con identidad propia bajo una misma firma: Unique Étoile y Lumiel.">
 <meta name="theme-color" content="#0E4358" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0B384B" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Casa Bebenia">
 <meta property="og:description" content="Casa Bebenia reúne vinos argentinos con identidad propia bajo una misma firma: Unique Étoile y Lumiel.">
@@ -26,7 +25,7 @@
 <link rel="canonical" href="https://casabebenia.com/">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap">
 <style>
-:root{color-scheme:light dark}
+:root{color-scheme:light}
 body{margin:0}
 img{max-width:100%}
 /* Casa Bebenia: casa de vinos. Sobria, elegante y de primera mano.
@@ -54,18 +53,6 @@ img{max-width:100%}
   --card: #FFFFFF;
   --gold-grad: linear-gradient(180deg, #F6E2A6 0%, #E2B964 46%, #C3963A 54%, #EBCB7C 100%);
   --shadow: rgba(8, 40, 55, .28);
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #0E3547; --paper-2: #123F54; --ink: #FAF6EE; --ink-soft: #C9D8DC; --line: #2C6277;
-    --gold: #E3BF6B; --gold-text: #E8C87A; --card: #134A60;
-    --night: #0A3144; --night-2: #061F2D; --shadow: rgba(0, 0, 0, .5); color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --paper: #0E3547; --paper-2: #123F54; --ink: #FAF6EE; --ink-soft: #C9D8DC; --line: #2C6277;
-  --gold: #E3BF6B; --gold-text: #E8C87A; --card: #134A60;
-  --night: #0A3144; --night-2: #061F2D; --shadow: rgba(0, 0, 0, .5); color-scheme: dark;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -433,11 +420,6 @@ a.inl:hover { text-decoration-thickness: 2px; }
 .top nav a:hover { color: var(--ink); border-bottom-color: var(--gold); }
 .menu-btn { color: var(--gold-text); }
 @media (max-width: 860px) { .top nav { background: var(--paper); border-top: 1px solid var(--line); } }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .top { background: rgba(7, 38, 54, .94); border-bottom-color: var(--night-line); color: var(--night-fg); }
-  :root:not([data-theme="light"]) .brand, :root:not([data-theme="light"]) .menu-btn { color: var(--night-gold); }
-  :root:not([data-theme="light"]) .top nav a { color: var(--night-soft); }
-}
 /* Lumiel: crema con borgoña; el video va como ventana en la parte superior */
 .lum-sec { position: relative; background: radial-gradient(ellipse 70% 40% at 50% 0%, rgba(232, 200, 122, .30) 0%, transparent 70%), linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%); color: var(--ink); border-block: 1px solid var(--line); }
 .lum-sec .wine { background: #FFFDF8; border: 1px solid var(--line); box-shadow: 0 26px 40px -30px rgba(80, 55, 15, .4); -webkit-backdrop-filter: none; backdrop-filter: none; }
