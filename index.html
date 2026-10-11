@@ -734,6 +734,7 @@ a.ci-v:hover { color: #F6E2A6; text-decoration: underline; text-underline-offset
             <div><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
             <div><label for="f-tipo">Soy</label><select id="f-tipo" name="tipo"><option>Consumidor</option><option>Vinoteca o comercio</option><option>Otro</option></select></div>
             <div class="full"><label for="f-msg">Mensaje</label><textarea id="f-msg" name="msg" required></textarea></div>
+            <div class="hp" aria-hidden="true" style="position:absolute;left:-9999px;height:0;overflow:hidden"><label>No completar <input name="web" tabindex="-1" autocomplete="off"></label></div>
             <div class="full check"><label class="chk"><input type="checkbox" id="f-ok" name="ok" required> <span>Acepto que Casa Bebenia use mis datos para responder mi consulta y que se almacenen en proveedores ubicados fuera de Argentina (por ejemplo, Estados Unidos), según la <a class="inl" href="/privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.</span></label></div>
             <div class="full"><button class="btn btn-dark" type="submit">Enviar consulta</button><p class="form-note" id="f-status" role="status" aria-live="polite"></p></div>
           </form>
@@ -766,6 +767,7 @@ a.ci-v:hover { color: #F6E2A6; text-decoration: underline; text-underline-offset
 <script>
 (function () {
   // HubSpot: completar con los datos de la cuenta (Marketing > Formularios). Si quedan vacíos, el formulario abre WhatsApp.
+  var SCRIPT_URL = ''; // URL de la app web de Google Apps Script (ver automatizacion/Code.gs)
   var HS_PORTAL_ID = '';
   var HS_FORM_GUID = '';
   var WA = 'https://wa.me/5491144106132'; var MAIL = 'casabebenia@gmail.com';
@@ -779,6 +781,15 @@ a.ci-v:hover { color: #F6E2A6; text-decoration: underline; text-underline-offset
     if (!f.elements.ok.checked) { st.textContent = 'Para enviar, aceptá el uso de tus datos.'; return; }
     var texto = 'Hola, soy ' + g('nombre') + ' ' + g('apellido') + ' (' + g('tipo') + '). Mi email es ' + g('email') + '.\n\n' + g('msg');
     var wa = WA + '?text=' + encodeURIComponent(texto);
+    if (SCRIPT_URL) {
+      btn.disabled = true; st.textContent = 'Enviando…';
+      fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({ nombre: g('nombre'), apellido: g('apellido'), email: g('email'), tipo: g('tipo'), msg: g('msg'), web: g('web'), pagina: location.href }) })
+      .then(function () { f.reset(); st.innerHTML = '¡Gracias! Recibimos tu consulta y te escribimos a la brevedad. Si es urgente, <a class="inl" href="' + wa + '" target="_blank" rel="noopener">escribinos por WhatsApp</a>.'; })
+      .catch(function () { st.innerHTML = 'No pudimos enviarla. Probá por <a class="inl" href="' + wa + '" target="_blank" rel="noopener">WhatsApp</a> o escribinos a <a class="inl" href="mailto:' + MAIL + '">' + MAIL + '</a>.'; })
+      .then(function () { btn.disabled = false; });
+      return;
+    }
     if (!HS_PORTAL_ID || !HS_FORM_GUID) { st.innerHTML = 'Abriendo tu correo… Si no se abre, escribinos a <a class="inl" href="mailto:' + MAIL + '">' + MAIL + '</a> o por <a class="inl" href="' + wa + '" target="_blank" rel="noopener">WhatsApp</a>.'; location.href = 'mailto:' + MAIL + '?subject=' + encodeURIComponent('Consulta desde casabebenia.com') + '&body=' + encodeURIComponent(texto); return; }
     btn.disabled = true; st.textContent = 'Enviando…';
     fetch('https://api.hsforms.com/submissions/v3/integration/submit/' + HS_PORTAL_ID + '/' + HS_FORM_GUID, {
