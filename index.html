@@ -410,6 +410,11 @@ a.inl:hover { text-decoration-thickness: 2px; }
 /* El video queda fijo al tamaño de la pantalla y la sección lo recorta: la botella no se agranda en secciones largas */
 .bgvid{clip-path:inset(0)}
 .bgvid video{position:fixed;top:0;left:0;width:100vw;height:100vh;height:100lvh}
+/* La copa del fondo se nota más: video a plena opacidad, velo más ligero, panel más transparente y sin desenfoque */
+.ue-sec .bgvid video{opacity:1;filter:brightness(1.25) contrast(1.08) saturate(1.1)}
+.ue-sec .bgvid::after{background:linear-gradient(180deg,rgba(5,32,45,.45) 0%,rgba(5,32,45,0) 45%,rgba(5,32,45,.5) 100%)}
+.ue-sec .ue-wrap{background:rgba(5,32,45,.28);-webkit-backdrop-filter:none;backdrop-filter:none}
+
 .band .wine{background:rgba(5,32,45,.55)}
 
 /* ---------- Paleta de la casa: crema / dorado champán / borgoña ---------- */
