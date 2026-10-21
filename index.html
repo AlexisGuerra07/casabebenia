@@ -680,7 +680,7 @@ a.ci-v:hover { color: #F6E2A6; text-decoration: underline; text-underline-offset
         <div class="map-panel" aria-live="polite">
           <p class="mp-kicker">Puntos de venta</p>
           <h3 id="mp-title">Elegí una ciudad</h3>
-          <div id="mp-text" class="mp-text">Unique Étoile se consigue en vinotecas de todo el país. Tocá una estrella en el mapa o elegí una ciudad abajo para ver direcciones.</div>
+          <div id="mp-text" class="mp-text">Unique Étoile se consigue en vinotecas y restaurantes de todo el país. Tocá una estrella en el mapa o elegí una ciudad abajo para ver direcciones.</div>
           <div class="chips"><button type="button" class="chip" data-c="tucuman">San Miguel de Tucumán</button><button type="button" class="chip" data-c="cordoba">Córdoba</button><button type="button" class="chip" data-c="rosario">Rosario</button><button type="button" class="chip" data-c="caba">CABA</button><button type="button" class="chip" data-c="mdp">Mar del Plata</button><button type="button" class="chip" data-c="pampa">La Pampa</button><button type="button" class="chip" data-c="sanjose">San José de la Esquina</button></div>
           <p class="mp-act"><a class="btn btn-gold" id="mp-wa" href="https://wa.me/5491144106132" target="_blank" rel="noopener">Consultar por WhatsApp</a></p>
           <p class="mp-note">¿Tenés una vinoteca y querés sumar nuestros vinos? Escribinos y te contamos cómo.</p>
@@ -694,7 +694,7 @@ a.ci-v:hover { color: #F6E2A6; text-decoration: underline; text-underline-offset
     var t = document.getElementById('mp-title'), x = document.getElementById('mp-text'), a = document.getElementById('mp-wa');
     var IG = 'https://www.instagram.com/', MP = 'https://www.google.com/maps/search/?api=1&query=';
     var P = {
-      caba: { map: 'caba', name: 'CABA', items: [{ n: 'Vinoteca Devoto', d: 'Devoto Shopping, José P. Varela 4866', q: 'Jose P. Varela 4866 CABA', ig: 'vinotecadevoto' }] },
+      caba: { map: 'caba', name: 'CABA', items: [{ n: 'Vinoteca Devoto', d: 'Devoto Shopping, José P. Varela 4866', q: 'Jose P. Varela 4866 CABA', ig: 'vinotecadevoto' }, { n: 'Don Zoilo · restaurante', d: 'Av. Dr. Honorio Pueyrredón 1406', q: 'Av. Dr. Honorio Pueyrredon 1406 CABA' }] },
       sanjose: { map: 'rosario', name: 'San José de la Esquina (Santa Fe)', items: [{ n: 'Aroma De Viñedos', d: 'Alberdi 390', q: 'Alberdi 390 San Jose de la Esquina Santa Fe', ig: 'julietadogalaz' }] },
       rosario: { map: 'rosario', name: 'Rosario', items: [{ n: 'Vinoteca La Cepa', d: 'Av. Hipólito Yrigoyen 999, La Florida', q: 'Av. Hipolito Yrigoyen 999 Rosario', ig: 'lacepa.vinoteca' }, { n: 'Vinos del Mercado', d: 'Salta 2937', q: 'Salta 2937 Rosario', ig: 'vinosdelmercado' }] },
       mdp: { map: 'mdp', name: 'Mar del Plata', items: [{ n: 'Aroma de Vid', d: 'Roca 2787', q: 'Roca 2787 Mar del Plata', ig: 'aromadevid' }] },
@@ -720,12 +720,11 @@ a.ci-v:hover { color: #F6E2A6; text-decoration: underline; text-underline-offset
           li.appendChild(document.createElement('br'));
           li.appendChild(document.createTextNode(it.d + ' · '));
           li.appendChild(link(MP + encodeURIComponent(it.q), 'Ver mapa'));
-          li.appendChild(document.createTextNode(' · '));
-          li.appendChild(link(IG + it.ig + '/', '@' + it.ig));
+          if (it.ig) { li.appendChild(document.createTextNode(' · ')); li.appendChild(link(IG + it.ig + '/', '@' + it.ig)); }
           ul.appendChild(li);
         });
         x.appendChild(ul);
-        x.appendChild(document.createTextNode('Te recomendamos consultar disponibilidad y horarios con la vinoteca antes de ir.'));
+        x.appendChild(document.createTextNode('Te recomendamos consultar disponibilidad y horarios con el local antes de ir.'));
       } else {
         x.appendChild(document.createTextNode('Estamos confirmando el punto de venta en ' + name + '. Escribinos y te decimos dónde conseguir Unique Étoile.'));
       }
@@ -749,7 +748,7 @@ a.ci-v:hover { color: #F6E2A6; text-decoration: underline; text-underline-offset
       </header>
       <div class="faq">
         <details><summary>¿Qué es Casa Bebenia?</summary><p>Es la casa que reúne vinos argentinos con identidad propia bajo una misma firma. Hoy son dos marcas: Unique Étoile, un espumante, y Lumiel, una línea de tintos de altura. Cada marca elige su carácter y su momento, y la casa pone el origen y el respaldo.</p></details>
-        <details><summary>¿Dónde puedo comprar?</summary><p>Unique Étoile se consigue en vinotecas de CABA, Santa Fe, Rosario, San Miguel de Tucumán, La Pampa y Mar del Plata (en la sección Dónde comprar ves direcciones y mapas). Si no ves tu ciudad, escribinos por <a class="inl" href="https://wa.me/5491144106132" target="_blank" rel="noopener">WhatsApp</a> y te orientamos.</p></details>
+        <details><summary>¿Dónde puedo comprar?</summary><p>Unique Étoile se consigue en vinotecas y restaurantes de CABA, Santa Fe, Rosario, San Miguel de Tucumán, La Pampa y Mar del Plata (en la sección Dónde comprar ves direcciones y mapas). Si no ves tu ciudad, escribinos por <a class="inl" href="https://wa.me/5491144106132" target="_blank" rel="noopener">WhatsApp</a> y te orientamos.</p></details>
         <details><summary>¿De dónde son los vinos de Lumiel?</summary><p>Del Valle de Uco, en Mendoza, a 1.100 metros sobre el nivel del mar, con suelo aluvial pedregoso. Después de la cosecha descansan ocho meses en roble francés.</p></details>
         <details><summary>¿A qué temperatura sirvo Lumiel?</summary><p>Entre 16 y 18 °C, tanto el Malbec como el Cabernet Franc.</p></details>
         <details><summary>Tengo una vinoteca o un comercio, ¿cómo trabajo con ustedes?</summary><p>Escribinos por WhatsApp a <a class="inl" href="https://wa.me/5491144106132" target="_blank" rel="noopener">Gabriela Critelli</a>, que atiende las consultas comerciales.</p><p><a class="btn btn-gold" href="https://wa.me/5491144106132" target="_blank" rel="noopener">Escribir a Gabriela</a></p></details>
