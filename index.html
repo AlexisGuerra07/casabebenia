@@ -458,6 +458,12 @@ a.inl:hover { text-decoration-thickness: 2px; }
 .map-sec .btn-gold:hover { background: var(--gold-text); border-color: var(--gold-text); color: #fff; }
 
 /* Mapa: sin recorrido; las estrellas se encienden y apagan de forma intercalada */
+.map-panel .mp-text { color: var(--night-soft); }
+.map-sec .map-panel .mp-text { color: var(--ink-soft); }
+.pv { list-style: none; margin: 14px 0 16px; padding: 0; }
+.pv li { padding: 10px 0; border-top: 1px solid var(--line); line-height: 1.5; }
+.pv li:last-child { border-bottom: 1px solid var(--line); }
+.pv strong { color: var(--ink); font-weight: 700; }
 @keyframes twk { 0%,100% { opacity: .18; } 40%,60% { opacity: 1; } }
 .map-box .city .cs { animation: twk 6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
 .map-box g.city:nth-of-type(1) .cs { animation-duration: 5.2s; animation-delay: 0s; }
@@ -674,8 +680,8 @@ a.ci-v:hover { color: #F6E2A6; text-decoration: underline; text-underline-offset
         <div class="map-panel" aria-live="polite">
           <p class="mp-kicker">Puntos de venta</p>
           <h3 id="mp-title">Elegí una ciudad</h3>
-          <p id="mp-text">Los vinos de Casa Bebenia, Unique Étoile y Lumiel, se consiguen en vinotecas de seis ciudades del país. Tocá una estrella en el mapa o elegí abajo.</p>
-          <div class="chips"><button type="button" class="chip" data-c="tucuman">San Miguel de Tucumán</button><button type="button" class="chip" data-c="cordoba">Córdoba</button><button type="button" class="chip" data-c="rosario">Rosario</button><button type="button" class="chip" data-c="caba">CABA</button><button type="button" class="chip" data-c="mdp">Mar del Plata</button><button type="button" class="chip" data-c="pampa">La Pampa</button></div>
+          <div id="mp-text" class="mp-text">Unique Étoile se consigue en vinotecas de todo el país. Tocá una estrella en el mapa o elegí una ciudad abajo para ver direcciones.</div>
+          <div class="chips"><button type="button" class="chip" data-c="tucuman">San Miguel de Tucumán</button><button type="button" class="chip" data-c="cordoba">Córdoba</button><button type="button" class="chip" data-c="rosario">Rosario</button><button type="button" class="chip" data-c="caba">CABA</button><button type="button" class="chip" data-c="mdp">Mar del Plata</button><button type="button" class="chip" data-c="pampa">La Pampa</button><button type="button" class="chip" data-c="sanjose">San José de la Esquina</button></div>
           <p class="mp-act"><a class="btn btn-gold" id="mp-wa" href="https://wa.me/5491144106132" target="_blank" rel="noopener">Consultar por WhatsApp</a></p>
           <p class="mp-note">¿Tenés una vinoteca y querés sumar nuestros vinos? Escribinos y te contamos cómo.</p>
         </div>
@@ -686,15 +692,45 @@ a.ci-v:hover { color: #F6E2A6; text-decoration: underline; text-underline-offset
   (function () {
     var WA = 'https://wa.me/5491144106132', cur = null;
     var t = document.getElementById('mp-title'), x = document.getElementById('mp-text'), a = document.getElementById('mp-wa');
+    var IG = 'https://www.instagram.com/', MP = 'https://www.google.com/maps/search/?api=1&query=';
+    var P = {
+      caba: { map: 'caba', name: 'CABA', items: [{ n: 'Vinoteca Devoto', d: 'Devoto Shopping, José P. Varela 4866', q: 'Jose P. Varela 4866 CABA', ig: 'vinotecadevoto' }] },
+      sanjose: { map: 'rosario', name: 'San José de la Esquina (Santa Fe)', items: [{ n: 'Aroma De Viñedos', d: 'Alberdi 390', q: 'Alberdi 390 San Jose de la Esquina Santa Fe', ig: 'julietadogalaz' }] },
+      rosario: { map: 'rosario', name: 'Rosario', items: [{ n: 'Vinoteca La Cepa', d: 'Av. Hipólito Yrigoyen 999, La Florida', q: 'Av. Hipolito Yrigoyen 999 Rosario', ig: 'lacepa.vinoteca' }, { n: 'Vinos del Mercado', d: 'Salta 2937', q: 'Salta 2937 Rosario', ig: 'vinosdelmercado' }] },
+      mdp: { map: 'mdp', name: 'Mar del Plata', items: [{ n: 'Aroma de Vid', d: 'Roca 2787', q: 'Roca 2787 Mar del Plata', ig: 'aromadevid' }] },
+      tucuman: { map: 'tucuman', name: 'San Miguel de Tucumán', items: [{ n: 'La Bodega Del Angel', d: 'Bolívar 906, Barrio Sur', q: 'Bolivar 906 San Miguel de Tucuman', ig: 'labodegadelangelok' }] },
+      pampa: { map: 'pampa', name: 'La Pampa', items: [{ n: 'B&B Vinotecas boutique · Santa Rosa', d: 'Marcelo T. Alvear 696', q: 'Marcelo T. Alvear 696 Santa Rosa La Pampa', ig: 'bybvinotecas' }, { n: 'B&B Vinotecas boutique · Toay', d: 'Av. 13 Caballería Este 644', q: 'Av. 13 Caballeria Este 644 Toay La Pampa', ig: 'bybvinotecas' }] },
+      cordoba: { map: 'cordoba', name: 'Córdoba', items: [] }
+    };
+    function link(href, txt) { var l = document.createElement('a'); l.className = 'inl'; l.href = href; l.target = '_blank'; l.rel = 'noopener'; l.textContent = txt; return l; }
     function pick(id) {
-      var g = document.getElementById('c-' + id); if (!g) return;
+      var c = P[id] || { map: id, name: '', items: [] };
+      var g = document.getElementById('c-' + c.map); if (!g) return;
       document.querySelectorAll('.city').forEach(function (n) { n.classList.toggle('on', n === g); });
       document.querySelectorAll('.chip').forEach(function (n) { n.classList.toggle('on', n.getAttribute('data-c') === id); });
-      var name = g.getAttribute('data-name');
+      var name = c.name || g.getAttribute('data-name');
       t.textContent = name;
-      x.textContent = 'Nuestros vinos están en vinotecas de ' + name + '. Escribinos y te decimos dónde conseguirlos.';
+      x.textContent = '';
+      if (c.items.length) {
+        x.appendChild(document.createTextNode('Unique Étoile en ' + name + ':'));
+        var ul = document.createElement('ul'); ul.className = 'pv';
+        c.items.forEach(function (it) {
+          var li = document.createElement('li');
+          var b = document.createElement('strong'); b.textContent = it.n; li.appendChild(b);
+          li.appendChild(document.createElement('br'));
+          li.appendChild(document.createTextNode(it.d + ' · '));
+          li.appendChild(link(MP + encodeURIComponent(it.q), 'Ver mapa'));
+          li.appendChild(document.createTextNode(' · '));
+          li.appendChild(link(IG + it.ig + '/', '@' + it.ig));
+          ul.appendChild(li);
+        });
+        x.appendChild(ul);
+        x.appendChild(document.createTextNode('Te recomendamos consultar disponibilidad y horarios con la vinoteca antes de ir.'));
+      } else {
+        x.appendChild(document.createTextNode('Estamos confirmando el punto de venta en ' + name + '. Escribinos y te decimos dónde conseguir Unique Étoile.'));
+      }
       a.textContent = 'Preguntar por ' + name;
-      a.href = WA + '?text=' + encodeURIComponent('Hola, quiero saber dónde comprar los vinos de Casa Bebenia en ' + name + '.');
+      a.href = WA + '?text=' + encodeURIComponent('Hola, quiero saber dónde comprar Unique Étoile en ' + name + '.');
     }
     document.querySelectorAll('.city').forEach(function (g) {
       var id = g.id.slice(2);
@@ -713,7 +749,7 @@ a.ci-v:hover { color: #F6E2A6; text-decoration: underline; text-underline-offset
       </header>
       <div class="faq">
         <details><summary>¿Qué es Casa Bebenia?</summary><p>Es la casa que reúne vinos argentinos con identidad propia bajo una misma firma. Hoy son dos marcas: Unique Étoile, un espumante, y Lumiel, una línea de tintos de altura. Cada marca elige su carácter y su momento, y la casa pone el origen y el respaldo.</p></details>
-        <details><summary>¿Dónde puedo comprar?</summary><p>Unique Étoile y Lumiel se consiguen en las mismas vinotecas de CABA, Rosario, San Miguel de Tucumán, La Pampa, Mar del Plata y Córdoba. Si no ves tu ciudad, escribinos por <a class="inl" href="https://wa.me/5491144106132" target="_blank" rel="noopener">WhatsApp</a> y te orientamos.</p></details>
+        <details><summary>¿Dónde puedo comprar?</summary><p>Unique Étoile se consigue en vinotecas de CABA, Santa Fe, Rosario, San Miguel de Tucumán, La Pampa y Mar del Plata (en la sección Dónde comprar ves direcciones y mapas). Si no ves tu ciudad, escribinos por <a class="inl" href="https://wa.me/5491144106132" target="_blank" rel="noopener">WhatsApp</a> y te orientamos.</p></details>
         <details><summary>¿De dónde son los vinos de Lumiel?</summary><p>Del Valle de Uco, en Mendoza, a 1.100 metros sobre el nivel del mar, con suelo aluvial pedregoso. Después de la cosecha descansan ocho meses en roble francés.</p></details>
         <details><summary>¿A qué temperatura sirvo Lumiel?</summary><p>Entre 16 y 18 °C, tanto el Malbec como el Cabernet Franc.</p></details>
         <details><summary>Tengo una vinoteca o un comercio, ¿cómo trabajo con ustedes?</summary><p>Escribinos por WhatsApp a <a class="inl" href="https://wa.me/5491144106132" target="_blank" rel="noopener">Gabriela Critelli</a>, que atiende las consultas comerciales.</p><p><a class="btn btn-gold" href="https://wa.me/5491144106132" target="_blank" rel="noopener">Escribir a Gabriela</a></p></details>
