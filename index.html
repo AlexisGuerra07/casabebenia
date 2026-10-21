@@ -384,7 +384,7 @@ a.inl:hover { text-decoration-thickness: 2px; }
 .mp-kicker { font-weight: 700; font-size: 13px; letter-spacing: .26em; text-transform: uppercase; color: var(--night-gold); margin: 0 0 10px; }
 .map-panel h3 { font-family: 'Cinzel', Georgia, serif; font-weight: 400; font-size: clamp(26px, 3.4vw, 36px); letter-spacing: .1em; text-transform: uppercase; margin: 0 0 12px; color: var(--night-fg); }
 .map-panel p { color: var(--night-soft); }
-.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 22px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 24px; }
 .chip { font: inherit; font-size: 17px; color: var(--night-fg); background: transparent; border: 1px solid var(--night-line); padding: 8px 14px; cursor: pointer; }
 .chip:hover, .chip.on { border-color: var(--night-gold); color: var(--night-gold); }
 .mp-note { font-style: italic; font-size: 18px; margin-top: 22px; }
@@ -464,6 +464,24 @@ a.inl:hover { text-decoration-thickness: 2px; }
 .pv li { padding: 10px 0; border-top: 1px solid var(--line); line-height: 1.5; }
 .pv li:last-child { border-bottom: 1px solid var(--line); }
 .pv strong { color: var(--ink); font-weight: 700; }
+.chip { font-size: 16px; padding: 10px 16px; border-radius: 999px; }
+.chip .cnt { display: inline-block; min-width: 20px; margin-left: 6px; padding: 0 6px; border-radius: 999px; background: var(--gold); color: #fff; font-size: 13px; line-height: 20px; text-align: center; }
+.chip.on { background: var(--gold); border-color: var(--gold); color: #fff !important; }
+.chip.on .cnt { background: #fff; color: var(--gold-text); }
+.map-sec .chip:hover { background: rgba(179, 138, 51, .12); }
+.map-sec .chip.on:hover { background: var(--gold-text); }
+.pv-card { padding: 16px 18px; margin: 0 0 12px; background: #fff; border: 1px solid var(--gold); border-left-width: 4px; box-shadow: 0 6px 20px rgba(122, 86, 18, .12); }
+.pv-card strong { display: block; font-size: 21px; color: var(--ink); line-height: 1.25; }
+.pv-d { display: block; margin: 4px 0 12px; color: var(--ink-soft); }
+.pv-act { display: flex; flex-wrap: wrap; gap: 8px; }
+.pv-btn { font-size: 15px; letter-spacing: .08em; text-transform: uppercase; text-decoration: none !important; padding: 9px 14px; border: 1px solid var(--gold); color: var(--gold-text) !important; }
+.pv-btn:hover { background: rgba(179, 138, 51, .14); }
+.pv-btn.pv-go { background: var(--gold); color: #fff !important; font-weight: 700; }
+.pv-btn.pv-go:hover { background: var(--gold-text); }
+.pv-note { font-size: 15px; font-style: italic; margin: 6px 0 0; }
+.map-sec .city.on .halo { fill: rgba(179, 138, 51, .3); stroke-width: 2; animation: hal 1.8s ease-in-out infinite; }
+@keyframes hal { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .map-sec .city.on .halo { animation: none; } }
 @keyframes twk { 0%,100% { opacity: .18; } 40%,60% { opacity: 1; } }
 .map-box .city .cs { animation: twk 6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
 .map-box g.city:nth-of-type(1) .cs { animation-duration: 5.2s; animation-delay: 0s; }
@@ -665,9 +683,9 @@ a.ci-v:hover { color: #F6E2A6; text-decoration: underline; text-underline-offset
   <section class="section alt map-sec" id="donde-comprar">
     <div class="wrap">
       <header class="sec-head center">
-        <p class="eyebrow">La botella viajera</p>
-        <h2>Nuestros vinos viajan por Argentina</h2>
-        <p class="statement">De ciudad en ciudad, cada botella encuentra su lugar. Tocá una estrella para saber dónde conseguir nuestros vinos.</p>
+        <p class="eyebrow">Dónde comprar</p>
+        <h2>Encontrá Unique Étoile cerca tuyo</h2>
+        <p class="statement">9 puntos de venta en 7 ciudades. Elegí tu ciudad en el mapa y llegá hoy a brindar con una botella que viajó hasta vos.</p>
       </header>
       <div class="map-grid">
         <div class="map-box">
@@ -678,12 +696,12 @@ a.ci-v:hover { color: #F6E2A6; text-decoration: underline; text-underline-offset
           </svg>
         </div>
         <div class="map-panel" aria-live="polite">
-          <p class="mp-kicker">Puntos de venta</p>
+          <div class="chips"><button type="button" class="chip" data-c="tucuman">San Miguel de Tucumán <span class="cnt">1</span></button><button type="button" class="chip" data-c="cordoba">Córdoba</button><button type="button" class="chip" data-c="rosario">Rosario <span class="cnt">2</span></button><button type="button" class="chip" data-c="caba">CABA <span class="cnt">2</span></button><button type="button" class="chip" data-c="mdp">Mar del Plata <span class="cnt">1</span></button><button type="button" class="chip" data-c="pampa">La Pampa <span class="cnt">2</span></button><button type="button" class="chip" data-c="sanjose">San José de la Esquina <span class="cnt">1</span></button></div>
+          <p class="mp-kicker" id="mp-kick">Elegí tu ciudad</p>
           <h3 id="mp-title">Elegí una ciudad</h3>
           <div id="mp-text" class="mp-text">Unique Étoile se consigue en vinotecas y restaurantes de todo el país. Tocá una estrella en el mapa o elegí una ciudad abajo para ver direcciones.</div>
-          <div class="chips"><button type="button" class="chip" data-c="tucuman">San Miguel de Tucumán</button><button type="button" class="chip" data-c="cordoba">Córdoba</button><button type="button" class="chip" data-c="rosario">Rosario</button><button type="button" class="chip" data-c="caba">CABA</button><button type="button" class="chip" data-c="mdp">Mar del Plata</button><button type="button" class="chip" data-c="pampa">La Pampa</button><button type="button" class="chip" data-c="sanjose">San José de la Esquina</button></div>
-          <p class="mp-act"><a class="btn btn-gold" id="mp-wa" href="https://wa.me/5491144106132" target="_blank" rel="noopener">Consultar por WhatsApp</a></p>
-          <p class="mp-note">¿Tenés una vinoteca y querés sumar nuestros vinos? Escribinos y te contamos cómo.</p>
+          <p class="mp-act"><a class="btn btn-gold" id="mp-wa" href="https://wa.me/5491144106132" target="_blank" rel="noopener">¿No ves tu ciudad? Escribinos</a></p>
+          <p class="mp-note">¿Tenés una vinoteca o un restaurante y querés sumar Unique Étoile? Escribinos y te contamos cómo.</p>
         </div>
       </div>
     </div>
@@ -691,15 +709,15 @@ a.ci-v:hover { color: #F6E2A6; text-decoration: underline; text-underline-offset
   <script>
   (function () {
     var WA = 'https://wa.me/5491144106132', cur = null;
-    var t = document.getElementById('mp-title'), x = document.getElementById('mp-text'), a = document.getElementById('mp-wa');
+    var t = document.getElementById('mp-title'), x = document.getElementById('mp-text'), kick = document.getElementById('mp-kick'), a = document.getElementById('mp-wa');
     var IG = 'https://www.instagram.com/', MP = 'https://www.google.com/maps/search/?api=1&query=';
     var P = {
-      caba: { map: 'caba', name: 'CABA', items: [{ n: 'Vinoteca Devoto', d: 'Devoto Shopping, José P. Varela 4866', q: 'Jose P. Varela 4866 CABA', ig: 'vinotecadevoto' }, { n: 'Don Zoilo · restaurante', d: 'Av. Dr. Honorio Pueyrredón 1406', q: 'Av. Dr. Honorio Pueyrredon 1406 CABA' }] },
-      sanjose: { map: 'rosario', name: 'San José de la Esquina (Santa Fe)', items: [{ n: 'Aroma De Viñedos', d: 'Alberdi 390', q: 'Alberdi 390 San Jose de la Esquina Santa Fe', ig: 'julietadogalaz' }] },
-      rosario: { map: 'rosario', name: 'Rosario', items: [{ n: 'Vinoteca La Cepa', d: 'Av. Hipólito Yrigoyen 999, La Florida', q: 'Av. Hipolito Yrigoyen 999 Rosario', ig: 'lacepa.vinoteca' }, { n: 'Vinos del Mercado', d: 'Salta 2937', q: 'Salta 2937 Rosario', ig: 'vinosdelmercado' }] },
-      mdp: { map: 'mdp', name: 'Mar del Plata', items: [{ n: 'Aroma de Vid', d: 'Roca 2787', q: 'Roca 2787 Mar del Plata', ig: 'aromadevid' }] },
-      tucuman: { map: 'tucuman', name: 'San Miguel de Tucumán', items: [{ n: 'La Bodega Del Angel', d: 'Bolívar 906, Barrio Sur', q: 'Bolivar 906 San Miguel de Tucuman', ig: 'labodegadelangelok' }] },
-      pampa: { map: 'pampa', name: 'La Pampa', items: [{ n: 'B&B Vinotecas boutique · Santa Rosa', d: 'Marcelo T. Alvear 696', q: 'Marcelo T. Alvear 696 Santa Rosa La Pampa', ig: 'bybvinotecas' }, { n: 'B&B Vinotecas boutique · Toay', d: 'Av. 13 Caballería Este 644', q: 'Av. 13 Caballeria Este 644 Toay La Pampa', ig: 'bybvinotecas' }] },
+      caba: { map: 'caba', name: 'CABA', items: [{ n: 'Vinoteca Devoto', d: 'Devoto Shopping, José P. Varela 4866', q: 'Jose P. Varela 4866 CABA', ig: 'vinotecadevoto', tel: '+541146395236' }, { n: 'Don Zoilo · restaurante', d: 'Av. Dr. Honorio Pueyrredón 1406', q: 'Av. Dr. Honorio Pueyrredon 1406 CABA', tel: '+541145881194' }] },
+      sanjose: { map: 'rosario', name: 'San José de la Esquina (Santa Fe)', items: [{ n: 'Aroma De Viñedos', d: 'Alberdi 390', q: 'Alberdi 390 San Jose de la Esquina Santa Fe', ig: 'julietadogalaz', tel: '+543467413629' }] },
+      rosario: { map: 'rosario', name: 'Rosario', items: [{ n: 'Vinoteca La Cepa', d: 'Av. Hipólito Yrigoyen 999, La Florida', q: 'Av. Hipolito Yrigoyen 999 Rosario', ig: 'lacepa.vinoteca' }, { n: 'Vinos del Mercado', d: 'Salta 2937', q: 'Salta 2937 Rosario', ig: 'vinosdelmercado', wa: '5493413124937' }] },
+      mdp: { map: 'mdp', name: 'Mar del Plata', items: [{ n: 'Aroma de Vid', d: 'Roca 2787', q: 'Roca 2787 Mar del Plata', ig: 'aromadevid', wa: '5492236850870' }] },
+      tucuman: { map: 'tucuman', name: 'San Miguel de Tucumán', items: [{ n: 'La Bodega Del Angel', d: 'Bolívar 906, Barrio Sur', q: 'Bolivar 906 San Miguel de Tucuman', ig: 'labodegadelangelok', tel: '+543812021458' }] },
+      pampa: { map: 'pampa', name: 'La Pampa', items: [{ n: 'B&B Vinotecas boutique · Santa Rosa', d: 'Marcelo T. Alvear 696', q: 'Marcelo T. Alvear 696 Santa Rosa La Pampa', ig: 'bybvinotecas', tel: '+542954422429' }, { n: 'B&B Vinotecas boutique · Toay', d: 'Av. 13 Caballería Este 644', q: 'Av. 13 Caballeria Este 644 Toay La Pampa', ig: 'bybvinotecas', tel: '+542954422429' }] },
       cordoba: { map: 'cordoba', name: 'Córdoba', items: [] }
     };
     function link(href, txt) { var l = document.createElement('a'); l.className = 'inl'; l.href = href; l.target = '_blank'; l.rel = 'noopener'; l.textContent = txt; return l; }
@@ -711,24 +729,24 @@ a.ci-v:hover { color: #F6E2A6; text-decoration: underline; text-underline-offset
       var name = c.name || g.getAttribute('data-name');
       t.textContent = name;
       x.textContent = '';
+      kick.textContent = c.items.length ? (c.items.length === 1 ? '1 punto de venta' : c.items.length + ' puntos de venta') : 'Muy pronto';
       if (c.items.length) {
-        x.appendChild(document.createTextNode('Unique Étoile en ' + name + ':'));
-        var ul = document.createElement('ul'); ul.className = 'pv';
         c.items.forEach(function (it) {
-          var li = document.createElement('li');
-          var b = document.createElement('strong'); b.textContent = it.n; li.appendChild(b);
-          li.appendChild(document.createElement('br'));
-          li.appendChild(document.createTextNode(it.d + ' · '));
-          li.appendChild(link(MP + encodeURIComponent(it.q), 'Ver mapa'));
-          if (it.ig) { li.appendChild(document.createTextNode(' · ')); li.appendChild(link(IG + it.ig + '/', '@' + it.ig)); }
-          ul.appendChild(li);
+          var card = document.createElement('div'); card.className = 'pv-card';
+          var b = document.createElement('strong'); b.textContent = it.n; card.appendChild(b);
+          var d = document.createElement('span'); d.className = 'pv-d'; d.textContent = it.d; card.appendChild(d);
+          var r = document.createElement('div'); r.className = 'pv-act';
+          var go = link(MP + encodeURIComponent(it.q), 'Cómo llegar'); go.className = 'pv-btn pv-go'; r.appendChild(go);
+          if (it.wa) { var w = link('https://wa.me/' + it.wa, 'WhatsApp'); w.className = 'pv-btn'; r.appendChild(w); }
+          else if (it.tel) { var tl = link('tel:' + it.tel, 'Llamar'); tl.className = 'pv-btn'; tl.removeAttribute('target'); r.appendChild(tl); }
+          if (it.ig) { var ig = link(IG + it.ig + '/', 'Instagram'); ig.className = 'pv-btn'; r.appendChild(ig); }
+          card.appendChild(r); x.appendChild(card);
         });
-        x.appendChild(ul);
-        x.appendChild(document.createTextNode('Te recomendamos consultar disponibilidad y horarios con el local antes de ir.'));
+        var nt = document.createElement('p'); nt.className = 'pv-note'; nt.textContent = 'Consultá disponibilidad y horarios con el local antes de ir.'; x.appendChild(nt);
       } else {
-        x.appendChild(document.createTextNode('Estamos confirmando el punto de venta en ' + name + '. Escribinos y te decimos dónde conseguir Unique Étoile.'));
+        x.appendChild(document.createTextNode('Estamos sumando el punto de venta en ' + name + '. Escribinos y te avisamos apenas esté disponible.'));
       }
-      a.textContent = 'Preguntar por ' + name;
+      a.textContent = c.items.length ? '¿Buscás otro lugar? Escribinos' : 'Avisame cuando esté en ' + name;
       a.href = WA + '?text=' + encodeURIComponent('Hola, quiero saber dónde comprar Unique Étoile en ' + name + '.');
     }
     document.querySelectorAll('.city').forEach(function (g) {
@@ -737,6 +755,7 @@ a.ci-v:hover { color: #F6E2A6; text-decoration: underline; text-underline-offset
       g.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(id); } });
     });
     document.querySelectorAll('.chip').forEach(function (b) { b.addEventListener('click', function () { pick(b.getAttribute('data-c')); }); });
+    pick('caba');
   })();
   </script>
 
