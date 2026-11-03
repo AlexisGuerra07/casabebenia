@@ -100,8 +100,8 @@ h2 { font-size: clamp(34px, 4.6vw, 54px); line-height: 1.12; letter-spacing: .00
 /* ---------- Cabecera ---------- */
 .top { position: sticky; top: 0; z-index: 20; background: rgba(7, 38, 54, .94); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-bottom: 1px solid var(--night-line); color: var(--night-fg); }
 .bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 32px; padding-block: 14px; }
-.brand { display: inline-flex; align-items: center; gap: 14px; text-decoration: none; font-family: 'Cinzel', Georgia, serif; font-weight: 400; font-size: 17px; letter-spacing: .3em; color: var(--night-gold); }
-.brand .star { width: 18px; flex: none; }
+.brand { display: inline-flex; align-items: center; gap: 14px; text-decoration: none; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 20px; letter-spacing: .24em; color: var(--night-gold); }
+.brand .star { width: 22px; flex: none; }
 .top nav { display: flex; gap: 2px 34px; }
 .top nav a { font-size: 13px; letter-spacing: .24em; text-decoration: none; color: var(--night-soft); padding: 10px 0; border-bottom: 1px solid transparent; white-space: nowrap; }
 .top nav a:hover { color: var(--night-fg); border-bottom-color: var(--night-gold); }
@@ -128,7 +128,7 @@ h2 { font-size: clamp(34px, 4.6vw, 54px); line-height: 1.12; letter-spacing: .00
 .stage .ring.thin { opacity: .22; }
 .stage .orbit-dots circle { fill: var(--night-gold); }
 .kicker { font-size: 14px; letter-spacing: .5em; color: var(--night-gold); margin: 0 0 14px; padding-left: .5em; }
-h1 { font-family: 'Cinzel', Georgia, serif; font-weight: 400; font-size: clamp(34px, 7.4vw, 82px); line-height: 1.08; letter-spacing: .24em; padding-left: .24em; margin-bottom: 20px; color: var(--night-gold); background: var(--gold-grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 2px 0 rgba(3, 20, 30, .4)); }
+h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: clamp(34px, 7.4vw, 82px); line-height: 1.08; letter-spacing: .2em; padding-left: .2em; margin-bottom: 20px; color: var(--night-gold); background: var(--gold-grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 2px 0 rgba(3, 20, 30, .4)); }
 .lede { font-style: italic; font-size: clamp(22px, 2.6vw, 30px); line-height: 1.35; margin: 0 auto 30px; max-width: 28ch; color: var(--night-fg); font-weight: 500; text-wrap: balance; }
 .hero-cta { margin: 0; }
 .scroll { position: absolute; left: 50%; bottom: 24px; width: 28px; height: 44px; margin-left: -14px; display: block; }
@@ -227,8 +227,8 @@ h2.lum { font-family: 'Cinzel', Georgia, serif; font-weight: 400; font-size: cla
 
 /* ---------- Pie ---------- */
 .foot { background: linear-gradient(180deg, var(--night) 0%, var(--night-2) 100%); color: var(--night-fg); padding-block: clamp(48px, 7vw, 80px) 32px; border-top: 1px solid var(--night-line); text-align: center; }
-.foot-star { width: 34px; margin: 0 auto 18px; }
-.foot-mark { font-family: 'Cinzel', Georgia, serif; font-weight: 400; font-size: 20px; letter-spacing: .32em; padding-left: .32em; text-decoration: none; color: var(--night-gold); }
+.foot-star { width: 42px; margin: 0 auto 18px; }
+.foot-mark { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 24px; letter-spacing: .26em; padding-left: .26em; text-decoration: none; color: var(--night-gold); }
 .foot-note { margin: 14px 0 26px; color: var(--night-soft); }
 .foot-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 30px; margin-bottom: 36px; }
 .foot-links a { font-weight: 700; font-size: 13px; letter-spacing: .22em; text-transform: uppercase; text-decoration: none; color: var(--night-soft); padding: 6px 0; }
@@ -539,9 +539,9 @@ a.ci-v:hover { color: #F6E2A6; text-decoration: underline; text-underline-offset
 .spiral-bg i { position: absolute; width: 4px; height: 4px; border-radius: 50%; background: #F6E2A6; box-shadow: 0 0 6px 1px rgba(232,200,122,.6); opacity: 0; animation: dotw var(--d) ease-in-out infinite; animation-delay: var(--w); }
 @keyframes spin { to { transform: rotate(360deg); } }
 @keyframes dotw { 0%,100% { opacity: 0; transform: scale(.5); } 50% { opacity: .9; transform: scale(1); } }
-.stage { width: 54px; margin: 0 auto 22px; }
+.stage { width: 68px; margin: 0 auto 22px; }
 .stage svg { display: block; width: 100%; height: auto; filter: drop-shadow(0 0 8px rgba(232,200,122,.45)); }
-@media (max-width: 560px) { .spiral-bg { width: 150vw; top: 42%; } .spiral-bg img { opacity: .24; } .stage { width: 46px; margin-bottom: 16px; } }
+@media (max-width: 560px) { .spiral-bg { width: 150vw; top: 42%; } .spiral-bg img { opacity: .24; } .stage { width: 58px; margin-bottom: 16px; } }
 @media (prefers-reduced-motion: reduce) { .spiral-bg img { animation: none; } .spiral-bg i { animation: none; opacity: .5; } }
 
 /* Portada: espiral vectorial nítida + velo suave tras el texto para que se lea */
@@ -566,7 +566,7 @@ a.ci-v:hover { color: #F6E2A6; text-decoration: underline; text-underline-offset
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
-<symbol id="star8" viewBox="-66 -76 132 178"><polygon style="fill:var(--star-l)" points="0.00,-74.00 4.78,-11.55 0,0"/><polygon style="fill:var(--star-l)" points="34.00,-32.00 11.55,-4.78 0,0"/><polygon style="fill:var(--star-l)" points="64.00,0.00 11.55,4.78 0,0"/><polygon style="fill:var(--star-l)" points="33.00,36.00 4.78,11.55 0,0"/><polygon style="fill:var(--star-l)" points="0.00,100.00 -4.78,11.55 0,0"/><polygon style="fill:var(--star-l)" points="-33.00,36.00 -11.55,4.78 0,0"/><polygon style="fill:var(--star-l)" points="-64.00,0.00 -11.55,-4.78 0,0"/><polygon style="fill:var(--star-l)" points="-34.00,-32.00 -4.78,-11.55 0,0"/><polygon style="fill:var(--star-d)" points="0.00,-74.00 -4.78,-11.55 0,0"/><polygon style="fill:var(--star-d)" points="34.00,-32.00 4.78,-11.55 0,0"/><polygon style="fill:var(--star-d)" points="64.00,0.00 11.55,-4.78 0,0"/><polygon style="fill:var(--star-d)" points="33.00,36.00 11.55,4.78 0,0"/><polygon style="fill:var(--star-d)" points="0.00,100.00 4.78,11.55 0,0"/><polygon style="fill:var(--star-d)" points="-33.00,36.00 -4.78,11.55 0,0"/><polygon style="fill:var(--star-d)" points="-64.00,0.00 -11.55,4.78 0,0"/><polygon style="fill:var(--star-d)" points="-34.00,-32.00 -11.55,-4.78 0,0"/></symbol>
+<symbol id="star8" viewBox="-66 -76 132 178"><polygon style="fill:var(--star-l)" points="0.00,12.00 6.11,-3.68 0.00,-62.25"/><polygon style="fill:var(--star-l)" points="0.00,12.00 12.80,6.09 26.40,-14.73"/><polygon style="fill:var(--star-l)" points="0.00,12.00 14.85,17.45 66.00,12.00"/><polygon style="fill:var(--star-l)" points="0.00,12.00 5.91,24.80 26.40,38.07"/><polygon style="fill:var(--star-l)" points="0.00,12.00 -6.11,27.68 0.00,84.60"/><polygon style="fill:var(--star-l)" points="0.00,12.00 -12.91,17.67 -26.73,38.07"/><polygon style="fill:var(--star-l)" points="0.00,12.00 -14.85,6.55 -66.00,12.00"/><polygon style="fill:var(--star-l)" points="0.00,12.00 -5.83,-0.83 -26.73,-14.73"/><polygon style="fill:var(--star-d)" points="0.00,12.00 0.00,-62.25 -6.11,-3.68"/><polygon style="fill:var(--star-d)" points="0.00,12.00 26.40,-14.73 5.75,-0.87"/><polygon style="fill:var(--star-d)" points="0.00,12.00 66.00,12.00 14.85,6.55"/><polygon style="fill:var(--star-d)" points="0.00,12.00 26.40,38.07 12.87,17.75"/><polygon style="fill:var(--star-d)" points="0.00,12.00 0.00,84.60 6.11,27.68"/><polygon style="fill:var(--star-d)" points="0.00,12.00 -26.73,38.07 -5.99,24.76"/><polygon style="fill:var(--star-d)" points="0.00,12.00 -66.00,12.00 -14.85,17.45"/><polygon style="fill:var(--star-d)" points="0.00,12.00 -26.73,-14.73 -12.83,6.17"/></symbol>
 </defs></svg>
 <a class="skip" href="#casa">Ir al contenido</a>
 
