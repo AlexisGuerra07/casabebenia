@@ -145,6 +145,23 @@ h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-s
 .casa-sep { display: flex; align-items: center; justify-content: center; gap: 16px; margin: clamp(36px, 5vw, 56px) 0; }
 .casa-sep span { display: block; width: clamp(48px, 9vw, 96px); height: 1px; background: var(--gold); opacity: .55; }
 .casa-sep svg { width: 22px; height: 29px; flex: none; }
+.nav-group { position: relative; display: flex; align-items: center; }
+.nav-parent::after { content: ''; display: inline-block; width: 5px; height: 5px; margin-left: 10px; border-right: 1px solid currentColor; border-bottom: 1px solid currentColor; transform: translateY(-2px) rotate(45deg); }
+.nav-sub { display: none; position: absolute; top: 100%; left: -18px; min-width: 230px; flex-direction: column; padding: 8px 18px; background: var(--paper); border: 1px solid var(--line); box-shadow: 0 14px 28px -12px rgba(7, 38, 54, .28); z-index: 5; }
+.nav-group:hover .nav-sub, .nav-group:focus-within .nav-sub { display: flex; }
+.nav-sub a { padding: 13px 0 !important; border-bottom: 1px solid var(--line) !important; }
+.nav-sub a:last-child { border-bottom: 0 !important; }
+.casa-links { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px 22px; margin: 30px 0 0; }
+.casa-links a { font-size: 13px; letter-spacing: .24em; text-transform: uppercase; text-decoration: none; color: var(--gold-text); padding: 10px 2px; border-bottom: 1px solid var(--gold); }
+.casa-links a:hover { color: var(--ink); }
+.casa-links span { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); opacity: .7; }
+@media (max-width: 860px) {
+  .nav-group { display: block; }
+  .nav-parent { display: block; }
+  .nav-parent::after { display: none; }
+  .nav-sub { display: flex !important; position: static; min-width: 0; padding: 0 0 4px 18px; background: transparent; border: 0; box-shadow: none; }
+  .nav-sub a { font-size: 13px; padding: 12px 0 !important; border-bottom: 0 !important; opacity: .9; }
+}
 .alt { background: var(--paper-2); border-block: 1px solid var(--line); }
 .pillars { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: clamp(40px, 6vw, 72px); border-top: 1px solid var(--line); }
 .pillars li { padding: 36px 28px 0; text-align: center; }
@@ -582,8 +599,13 @@ a.ci-v:hover { color: #F6E2A6; text-decoration: underline; text-underline-offset
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menú"><span></span></button>
     <nav id="site-nav" aria-label="Principal">
       <a href="#casa">La casa</a>
-      <a href="#unique">Unique Étoile</a>
-      <a href="#lumiel">Lumiel</a>
+      <div class="nav-group">
+        <a href="#productos" class="nav-parent">Nuestros productos</a>
+        <div class="nav-sub">
+          <a href="#unique">Unique Étoile</a>
+          <a href="#lumiel">Lumiel</a>
+        </div>
+      </div>
       <a href="#donde-comprar">Dónde comprar</a>
       <a href="#contacto">Contacto</a>
     </nav>
@@ -621,6 +643,7 @@ a.ci-v:hover { color: #F6E2A6; text-decoration: underline; text-underline-offset
       <div class="casa-block" id="productos">
         <h2 class="casa-h">Nuestros productos</h2>
         <p class="statement">Casa Bebenia quiere honrar con humildad la búsqueda de la excelencia en cada producto que la naturaleza pone en nuestras manos. En cada uno de nuestros productos está lo mejor de esa búsqueda de lo excelente.</p>
+        <p class="casa-links"><a href="#unique">Unique Étoile</a><span aria-hidden="true"></span><a href="#lumiel">Lumiel</a></p>
       </div>
     </div>
   </section>
